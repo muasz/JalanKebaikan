@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jalan Kebaikan - Lazismu DIY</title>
+    
+    <!-- Tailwind CSS (CDN) untuk penataan grid & tata letak responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- File CSS Utama Anda -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- ===================================================
+     NAVBAR / HEADER (Diperbarui agar sama dengan campaign.html) ==================================================== -->
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="container-responsive py-4 flex items-center justify-between">
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-3 focus-visible:outline-none">
+            <div class="w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-xl">
+                JK
+            </div>
+            <span class="font-bold text-xl text-gray-900">Jalan Kebaikan</span>
+        </a>
+
+        <!-- Navigasi Desktop -->
+        <nav class="hidden md:flex items-center gap-8 font-medium text-gray-700" aria-label="Navigasi Utama">
+            <a href="index.html" class="text-orange-600 font-semibold pb-1 border-b-2 border-orange-600">Beranda</a>
+            <a href="campaign.html" class="hover:text-orange-600 transition-colors">Campaign</a>
+            <a href="#" class="hover:text-orange-600 transition-colors">Ziska</a>
+            <a href="#" class="hover:text-orange-600 transition-colors">Laporan</a>
+        </nav>
+
+        <!-- Aksi Header (Masuk) -->
+        <div>
+            <a href="#" class="btn-primary px-6 py-2 text-sm font-bold shadow-sm">
+                Masuk
+            </a>
+        </div>
+    </div>
+</header>
+
+    <!-- ===================================================
+         2. MAIN CONTENT
+    ==================================================== -->
+    <main class="flex-grow">
+
+        <!-- HERO SECTION -->
+        <section id="beranda" class="py-6 md:py-10">
+            <div class="container-responsive">
+                <div class="hero-banner p-6 sm:p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="max-w-xl">
+                        <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                            #MemberiUntukNegeri
+                        </span>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+                            Wujudkan Kepedulian, Bentuk Harapan Baru
+                        </h1>
+                        <p class="text-white/90 text-sm sm:text-base mb-6 leading-relaxed">
+                            Salurkan zakat, infaq, dan sedekah Anda secara transparan dan amanah bersama Lazismu DIY untuk membantu sesama yang membutuhkan.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#program" class="btn-primary bg-white text-orange-600 hover:bg-orange-50 font-bold">
+                                Lihat Program
+                            </a>
+                            <a href="#tentang" class="btn-outline border-white text-white hover:bg-white/10">
+                                Pelajari Lebih Lanjut
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Statistik Singkat di dalam Hero -->
+                    <div class="w-full md:w-auto bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-center sm:text-left grid grid-cols-2 gap-6 min-w-[260px]">
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold">12.500+</span>
+                            <span class="text-xs sm:text-sm text-white/80">Donatur Aktif</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-extrabold">45+</span>
+                            <span class="text-xs sm:text-sm text-white/80">Program Aktif</span>
+                        </div>
+                        <div class="col-span-2 border-t border-white/20 pt-4">
+                            <span class="block text-xl sm:text-2xl font-extrabold">Rp 2,4 M+</span>
+                            <span class="text-xs sm:text-sm text-white/80">Dana Tersalurkan Tahun Ini</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAFTAR PROGRAM DONASI -->
+        <section id="program" class="py-10 md:py-16">
+            <div class="container-responsive">
+                <!-- Judul Bagian -->
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">
+                            Program Pilihan
+                        </h2>
+                        <p class="text-gray-600 text-sm sm:text-base mt-1">
+                            Pilih program kebaikan dan mulailah berdonasi hari ini.
+                        </p>
+                    </div>
+                    <!-- Filter Kategori -->
+                    <div class="flex flex-wrap gap-2">
+                        <button class="px-4 py-2 rounded-full text-sm font-semibold bg-orange-600 text-white">Semua</button>
+                        <button class="px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200">Pendidikan</button>
+                        <button class="px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200">Kemanusiaan</button>
+                        <button class="px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200">Ekonomi</button>
+                    </div>
+                </div>
+
+                <!-- GRID KARTU PROGRAM (1 Kolom di HP, 2 di Tablet, 3 di Desktop) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- KARTU 1 -->
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80" 
+                             alt="Anak-anak belajar di sekolah pedalaman" 
+                             class="w-full h-48 object-cover">
+                        <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                            <div>
+                                <span class="badge mb-2">Pendidikan</span>
+                                <h3 class="font-bold text-lg leading-snug hover:text-orange-600 transition-colors">
+                                    <a href="#">Beasiswa Sang Surya untuk Mahasiswa & Pelajar Dhuafa</a>
+                                </h3>
+                                <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+                                    Bantu anak-anak berprestasi dari keluarga kurang mampu agar dapat melanjutkan pendidikan tanpa terkendala biaya.
+                                </p>
+                            </div>
+                            
+                            <!-- Progress Donasi -->
+                            <div class="space-y-2 pt-2 border-t border-gray-100">
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 75%;" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="flex justify-between text-xs sm:text-sm font-medium">
+                                    <div>
+                                        <span class="text-gray-500 block">Terkumpul</span>
+                                        <span class="font-bold text-orange-600">Rp 37.500.000</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-gray-500 block">Target</span>
+                                        <span class="font-semibold text-gray-800">Rp 50.000.000</span>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn-primary w-full mt-3 text-sm">
+                                    Donasi Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- KARTU 2 -->
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1546182990-dffe1be0951e?auto=format&fit=crop&w=600&q=80" 
+                             alt="Bantuan air bersih untuk daerah kekeringan" 
+                             class="w-full h-48 object-cover">
+                        <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                            <div>
+                                <span class="badge mb-2">Kemanusiaan</span>
+                                <h3 class="font-bold text-lg leading-snug hover:text-orange-600 transition-colors">
+                                    <a href="#">Sumur Bor & Pipanisasi untuk Desa Rawan Kekeringan</a>
+                                </h3>
+                                <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+                                    Hadirkan sumber air bersih berkelanjutan di pelosok Gunungkidul dan sekitarnya yang mengalami krisis air.
+                                </p>
+                            </div>
+                            
+                            <!-- Progress Donasi -->
+                            <div class="space-y-2 pt-2 border-t border-gray-100">
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 40%;" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="flex justify-between text-xs sm:text-sm font-medium">
+                                    <div>
+                                        <span class="text-gray-500 block">Terkumpul</span>
+                                        <span class="font-bold text-orange-600">Rp 40.000.000</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-gray-500 block">Target</span>
+                                        <span class="font-semibold text-gray-800">Rp 100.000.000</span>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn-primary w-full mt-3 text-sm">
+                                    Donasi Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- KARTU 3 -->
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80" 
+                             alt="Pemberdayaan UMKM dan pedagang kecil" 
+                             class="w-full h-48 object-cover">
+                        <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                            <div>
+                                <span class="badge mb-2">Ekonomi</span>
+                                <h3 class="font-bold text-lg leading-snug hover:text-orange-600 transition-colors">
+                                    <a href="#">Bantuan Modal Usaha & Alat Kerja bagi UMKM Dhuafa</a>
+                                </h3>
+                                <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+                                    Dampingi keluarga dhuafa agar mandiri secara ekonomi melalui modal usaha produktif dan pelatihan kewirausahaan.
+                                </p>
+                            </div>
+                            
+                            <!-- Progress Donasi -->
+                            <div class="space-y-2 pt-2 border-t border-gray-100">
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 88%;" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="flex justify-between text-xs sm:text-sm font-medium">
+                                    <div>
+                                        <span class="text-gray-500 block">Terkumpul</span>
+                                        <span class="font-bold text-orange-600">Rp 26.400.000</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-gray-500 block">Target</span>
+                                        <span class="font-semibold text-gray-800">Rp 30.000.000</span>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn-primary w-full mt-3 text-sm">
+                                    Donasi Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================================================
+         3. FOOTER
+    ==================================================== -->
+    <footer class="bg-gray-900 text-white mt-auto py-12 border-t border-gray-800">
+        <div class="container-responsive grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Kolom 1: Profil -->
+            <div class="md:col-span-2">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-sm">
+                        JK
+                    </div>
+                    <span class="font-bold text-lg">Jalan Kebaikan - LAZISMU DIY</span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                    Lembaga Amil Zakat, Infaq, dan Shadaqah Muhammadiyah Daerah Istimewa Yogyakarta. Berhikmat untuk pemberdayaan masyarakat yang amanah dan profesional.
+                </p>
+            </div>
+
+            <!-- Kolom 2: Tautan -->
+            <div>
+                <h4 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-4">Navigasi</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#beranda" class="hover:text-white transition-colors">Beranda</a></li>
+                    <li><a href="#program" class="hover:text-white transition-colors">Daftar Program</a></li>
+                    <li><a href="#tentang" class="hover:text-white transition-colors">Tentang Lazismu</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3: Kontak -->
+            <div>
+                <h4 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-4">Layanan Donatur</h4>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Jl. Gedongkuning No.130B, Rejowinangun, Kotagede, Yogyakarta<br>
+                    WhatsApp: 0811-0000-0000<br>
+                    Email: info@lazismudiy.or.id
+                </p>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="container-responsive mt-10 pt-6 border-t border-gray-800 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+            <p>&copy; 2026 Lazismu DIY - Jalan Kebaikan. All rights reserved.</p>
+            <p class="mt-2 sm:mt-0">Dibuat dengan kepedulian untuk sesama.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

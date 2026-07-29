@@ -1,0 +1,52 @@
+{
+  "name": "Jalan Kebaikan by LAZISMU DIY",
+  "short_name": "Jalan Kebaikan",
+  "description": "Platform donasi digital LAZISMU DIY untuk membantu masyarakat melalui program kemanusiaan, pendidikan, kesehatan, dan sosial.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#c2410c",
+  "background_color": "#ffffff",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Campaign",
+      "short_name": "Campaign",
+      "description": "Lihat daftar campaign donasi",
+      "url": "./campaign.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Formulir Donasi",
+      "short_name": "Donasi",
+      "description": "Langsung menuju formulir donasi",
+      "url": "./formulir-donasi.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

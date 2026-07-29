@@ -1,0 +1,416 @@
+/*
+========================================================
+Jalan Kebaikan
+Main Stylesheet
+Author : Lazismu DIY
+========================================================
+*/
+
+/* =========================
+   ROOT
+========================= */
+
+:root{
+    --primary:#c2410c;
+    --background:#ffffff;
+    --text:#1f2937;
+    --border:#e5e7eb;
+    --muted:#6b7280;
+}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--background);
+    color:var(--text);
+    line-height:1.6;
+}
+
+/* =========================
+   MOBILE CONTAINER
+========================= */
+
+.container-mobile{
+    max-width:480px;
+    margin:auto;
+    min-height:100vh;
+    background:#ffffff;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+/* =========================
+   LINK
+========================= */
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button{
+    cursor:pointer;
+    transition:.25s;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+/* Focus untuk aksesibilitas */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
+
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+
+}
+
+/* =========================
+   INPUT
+========================= */
+
+input,
+textarea,
+select{
+
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px;
+    font-size:16px;
+    color:var(--text);
+
+}
+
+input,
+textarea{
+    background:#fff;
+}
+
+textarea{
+    resize:vertical;
+    min-height:120px;
+}
+
+label{
+
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+}
+
+/* =========================
+   BADGE
+========================= */
+
+.badge{
+
+    display:inline-block;
+    background:#ffedd5;
+    color:var(--primary);
+    padding:4px 10px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progress{
+
+    width:100%;
+    height:10px;
+    background:#e5e7eb;
+    border-radius:999px;
+    overflow:hidden;
+
+}
+
+.progress-value{
+
+    height:100%;
+    background:var(--primary);
+    border-radius:999px;
+
+}
+
+/* =========================
+   HERO IMAGE
+========================= */
+
+.hero-image{
+
+    border-radius:16px;
+    object-fit:cover;
+
+}
+
+/* =========================
+   BOTTOM NAVIGATION
+========================= */
+
+.bottom-nav{
+
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+
+    background:#ffffff;
+
+    border-top:1px solid var(--border);
+
+    z-index:100;
+
+}
+
+.bottom-nav a{
+
+    min-height:44px;
+
+}
+
+/* =========================
+   PRIMARY BUTTON
+========================= */
+
+.btn-primary{
+
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+
+    min-height:48px;
+
+    border:none;
+
+    background:var(--primary);
+
+    color:#ffffff;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    background:#9a3412;
+
+}
+
+/* =========================
+   SECONDARY BUTTON
+========================= */
+
+.btn-outline{
+
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+
+    min-height:48px;
+
+    background:#ffffff;
+
+    border:1px solid var(--primary);
+
+    color:var(--primary);
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+.btn-outline:hover{
+
+    background:#fff7ed;
+
+}
+
+/* =========================
+   PRESET DONATION BUTTON
+========================= */
+
+.nominal-button{
+
+    min-width:90px;
+    min-height:48px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#ffffff;
+
+    font-weight:600;
+
+}
+
+.nominal-button:hover{
+
+    border-color:var(--primary);
+
+}
+
+.nominal-button.active{
+
+    background:var(--primary);
+
+    color:#ffffff;
+
+}
+
+/* =========================
+   STICKY DONATION FOOTER
+========================= */
+
+.sticky-donation{
+
+    position:sticky;
+
+    bottom:70px;
+
+    background:#ffffff;
+
+    padding:16px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* =========================
+   PROGRESS TEXT
+========================= */
+
+.progress-info{
+
+    font-size:14px;
+
+    color:var(--muted);
+
+}
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.error-message{
+
+    color:#b91c1c;
+
+    font-size:14px;
+
+    margin-top:6px;
+
+}
+
+/* =========================
+   SCREEN READER ONLY
+========================= */
+
+.sr-only{
+
+    position:absolute;
+
+    width:1px;
+    height:1px;
+
+    padding:0;
+    margin:-1px;
+
+    overflow:hidden;
+
+    clip:rect(0,0,0,0);
+
+    white-space:nowrap;
+
+    border:0;
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (min-width:481px){
+
+    body{
+
+        background:#f3f4f6;
+
+    }
+
+    .container-mobile{
+
+        box-shadow:0 8px 24px rgba(0,0,0,.12);
+
+    }
+
+}

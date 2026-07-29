@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Campaign - Jalan Kebaikan by LAZISMU DIY</title>
+  
+  <!-- Web App Manifest & Service Worker -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#c2410c">
+  
+  <!-- CSS Utama & Tailwind CSS via CDN -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#c2410c', // Oranye gelap (kontras lulus WCAG 2.2 AA)
+              hover: '#9a3412',
+            },
+            dark: '#1f2937'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-[#1f2937] font-sans min-h-screen flex justify-center">
+
+  <!-- Container utama mobile-first (max-width 480px) -->
+  <!-- pb-36 agar konten tidak tertutup oleh sticky footer donasi & bottom navigation -->
+  <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col justify-between shadow-xl relative pb-36">
+
+    <!-- Header Atas Landmark -->
+    <header class="sticky top-0 bg-white border-b border-gray-200 z-40 px-3 py-2 flex items-center justify-between">
+      <!-- Tombol Kembali dengan Label Teks Eksplisit & Min 44x44px -->
+      <a href="campaign.html" class="min-h-[44px] min-w-[44px] px-2 flex items-center gap-1.5 text-[#1f2937] hover:text-[#c2410c] font-medium text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c2410c]" aria-label="Kembali ke halaman daftar campaign">
+        <svg class="w-5 h-5 text-[#c2410c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        <span>Kembali</span>
+      </a>
+
+      <!-- H1 Page Title (Hierarki Tertinggi di Halaman) -->
+      <h1 class="text-base font-bold text-[#1f2937] text-center truncate px-2">
+        Detail Campaign
+      </h1>
+
+      <!-- Tombol Bagikan dengan Label Teks Eksplisit & Min 44x44px -->
+      <button type="button" class="min-h-[44px] min-w-[44px] px-2 flex items-center gap-1.5 text-[#1f2937] hover:text-[#c2410c] font-medium text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c2410c]" aria-label="Bagikan campaign ini">
+        <span>Bagikan</span>
+        <svg class="w-5 h-5 text-[#c2410c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Main Content Landmark -->
+    <main id="main-content" class="flex-1">
+      
+      <!-- Gambar Hero Campaign -->
+      <div class="relative w-full">
+        <img src="images/detail-hero.jpg" alt="Relawan LAZISMU DIY mendistribusikan paket bahan pangan dasar kepada keluarga lansia di daerah rawan banjir Bantul" class="w-full h-64 object-cover bg-gray-200" width="480" height="256">
+      </div>
+
+      <!-- Info Utama Campaign -->
+      <div class="p-4 border-b border-gray-200">
+        <!-- Badge Kategori -->
+        <span class="inline-block bg-[#c2410c] text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">
+          Kemanusiaan
+        </span>
+
+        <!-- Judul Campaign (H2 sesuai hierarki H1 > H2 > H3) -->
+        <h2 class="text-xl font-bold text-[#1f2937] leading-snug mb-3">
+          Bantu Korban Bencana Banjir & Longsor DIY
+        </h2>
+
+        <!-- Lokasi & Penyelenggara -->
+        <div class="space-y-1.5 text-xs text-gray-700 mb-4">
+          <div class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-[#c2410c] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span class="font-medium">Lokasi: Kabupaten Bantul, DIY</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-[#c2410c] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+            <span class="font-medium">Penyelenggara: LAZISMU DIY</span>
+          </div>
+        </div>
+
+        <!-- Ringkasan Progres Donasi -->
+        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+          <div class="flex justify-between text-xs font-semibold mb-1">
+            <span class="text-[#c2410c]">75% Terkumpul</span>
+            <span class="text-gray-600">Sisa 12 hari</span>
+          </div>
+          <div role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Progres donasi 75 persen" class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden mb-2">
+            <div class="bg-[#c2410c] h-2.5 rounded-full" style="width: 75%"></div>
+          </div>
+          <div class="flex justify-between text-xs">
+            <div>
+              <span class="text-gray-500 block">Terkumpul</span>
+              <span class="font-bold text-[#1f2937] text-sm">Rp 75.000.000</span>
+            </div>
+            <div class="text-right">
+              <span class="text-gray-500 block">Target</span>
+              <span class="font-bold text-gray-700 text-sm">Rp 100.000.000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Navigasi (WCAG 2.2 AA Compliant dengan role tablist/tab/tabpanel) -->
+      <div class="border-b border-gray-200 bg-white" role="tablist" aria-label="Informasi Campaign">
+        <div class="flex justify-around">
+          <!-- Tab 1: Aktif -->
+          <button type="button" 
+                  role="tab" 
+                  aria-selected="true" 
+                  aria-controls="panel-detail" 
+                  id="tab-detail" 
+                  class="flex-1 min-h-[48px] py-3 text-sm font-bold text-[#c2410c] border-b-2 border-[#c2410c] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#c2410c]">
+            Detail Campaign
+          </button>
+          
+          <!-- Tab 2 -->
+          <button type="button" 
+                  role="tab" 
+                  aria-selected="false" 
+                  aria-controls="panel-donatur" 
+                  id="tab-donatur" 
+                  class="flex-1 min-h-[48px] py-3 text-sm font-medium text-gray-600 hover:text-[#c2410c] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#c2410c]">
+            Donatur (1.240)
+          </button>
+          
+          <!-- Tab 3 -->
+          <button type="button" 
+                  role="tab" 
+                  aria-selected="false" 
+                  aria-controls="panel-kabar" 
+                  id="tab-kabar" 
+                  class="flex-1 min-h-[48px] py-3 text-sm font-medium text-gray-600 hover:text-[#c2410c] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#c2410c]">
+            Kabar Terbaru
+          </button>
+        </div>
+      </div>
+
+      <!-- Konten Tab Aktif: Detail Campaign -->
+      <div id="panel-detail" role="tabpanel" aria-labelledby="tab-detail" class="p-4 space-y-4">
+        <!-- Sub-judul sebagai H3 -->
+        <h3 class="text-base font-bold text-[#1f2937]">
+          Latar Belakang Campaign
+        </h3>
+
+        <!-- Teks Deskripsi Panjang Campaign -->
+        <div class="text-sm text-[#1f2937] leading-relaxed space-y-3">
+          <p>
+            Curah hujan dengan intensitas tinggi yang melanda wilayah Daerah Istimewa Yogyakarta dalam beberapa pekan terakhir telah menyebabkan bencana banjir luapan sungai serta tanah longsor di sejumlah titik, khususnya di wilayah Kabupaten Bantul.
+          </p>
+          <p>
+            Ratusan kepala keluarga terpaksa mengungsi ke tempat yang lebih aman karena rumah dan lahan pertanian mereka terendam banjir atau terdampak material longsoran. Saat ini, kebutuhan mendesak yang dibutuhkan oleh para warga terdampak meliputi makanan siap saji, air bersih, perlengkapan higienis, susu bayi, serta selimut hangat.
+          </p>
+          <p>
+            LAZISMU DIY melalui tim relawan tanggap bencana telah terjun langsung ke lapangan sejak hari pertama untuk membantu evakuasi dan mendirikan dapur umum. Namun, jangkauan bantuan perlu diperluas agar seluruh warga terdampak dapat segera menerima perlengkapan dan nutrisi yang layak selama masa pemulihan darurat.
+          </p>
+          <p>
+            Mari bersama-sama wujudkan kepedulian kita. Setiap donasi yang Anda berikan melalui <span class="font-semibold text-[#c2410c]">Jalan Kebaikan</span> akan disalurkan secara transparan dan akuntabel kepada penerima manfaat yang paling membutuhkan.
+          </p>
+        </div>
+      </div>
+
+      <!-- Panel Donatur (Tersembunyi secara default untuk demonstrasi struktur aksesibel) -->
+      <div id="panel-donatur" role="tabpanel" aria-labelledby="tab-donatur" class="hidden p-4">
+        <p class="text-sm text-gray-600">Daftar para donatur yang telah berkontribusi dalam campaign ini.</p>
+      </div>
+
+      <!-- Panel Kabar Terbaru (Tersembunyi) -->
+      <div id="panel-kabar" role="tabpanel" aria-labelledby="tab-kabar" class="hidden p-4">
+        <p class="text-sm text-gray-600">Informasi terbaru mengenai distribusi bantuan dan kondisi terkini di lapangan.</p>
+      </div>
+
+    </main>
+
+    <!-- Sticky Footer untuk Aksi Donasi -->
+    <div class="fixed bottom-14 w-full max-w-[480px] bg-white border-t border-gray-200 p-3 z-40 shadow-lg">
+      <div class="flex flex-col gap-2">
+        <span class="text-xs font-bold text-gray-700 text-center tracking-wide">
+          MINIMAL DONASI Rp 10.000
+        </span>
+        <a href="formulir-donasi.html" class="w-full min-h-[44px] bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold text-sm rounded-lg flex items-center justify-center transition-colors shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#c2410c]" aria-label="Mulai donasi untuk campaign Bantu Korban Bencana Banjir dan Longsor DIY">
+          Mulai Donasi
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation Landmark -->
+    <nav aria-label="Navigasi Utama Bawah" class="fixed bottom-0 w-full max-w-[480px] bg-white border-t border-gray-200 py-1.5 px-2 flex justify-around items-center z-50">
+      
+      <!-- Item Nav: Beranda -->
+      <a href="index.html" class="flex flex-col items-center justify-center min-h-[44px] min-w-[44px] px-2 text-gray-600 hover:text-[#c2410c] focus:outline-none focus:ring-2 focus:ring-[#c2410c] rounded-md">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        <span class="text-[11px] mt-0.5 font-medium">Beranda</span>
+      </a>
+
+      <!-- Item Nav: Campaign (Aktif) -->
+      <a href="campaign.html" aria-current="page" class="flex flex-col items-center justify-center min-h-[44px] min-w-[44px] px-2 text-[#c2410c] font-bold focus:outline-none focus:ring-2 focus:ring-[#c2410c] rounded-md">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+        </svg>
+        <span class="text-[11px] mt-0.5">Campaign</span>
+      </a>
+
+      <!-- Item Nav: Ziska -->
+      <a href="#" class="flex flex-col items-center justify-center min-h-[44px] min-w-[44px] px-2 text-gray-600 hover:text-[#c2410c] focus:outline-none focus:ring-2 focus:ring-[#c2410c] rounded-md">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="text-[11px] mt-0.5 font-medium">Ziska</span>
+      </a>
+
+      <!-- Item Nav: Laporan -->
+      <a href="#" class="flex flex-col items-center justify-center min-h-[44px] min-w-[44px] px-2 text-gray-600 hover:text-[#c2410c] focus:outline-none focus:ring-2 focus:ring-[#c2410c] rounded-md">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        <span class="text-[11px] mt-0.5 font-medium">Laporan</span>
+      </a>
+
+    </nav>
+
+  </div>
+
+  <!-- JavaScript Utama -->
+  <script src="js/main.js"></script>
+</body>
+</html>

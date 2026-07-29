@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Campaign - Jalan Kebaikan Lazismu DIY</title>
+    
+    <!-- Tailwind CSS (CDN) untuk penataan grid & tata letak responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- File CSS Utama Anda -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+    <!-- ===================================================
+         1. NAVBAR / HEADER
+    ==================================================== -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="container-responsive py-4 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 focus-visible:outline-none">
+                <div class="w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-xl">
+                    JK
+                </div>
+                <span class="font-bold text-xl text-gray-900">Jalan Kebaikan</span>
+            </a>
+
+            <!-- Navigasi Desktop -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-gray-700" aria-label="Navigasi Utama">
+                <a href="index.html" class="hover:text-orange-600 transition-colors">Beranda</a>
+                <a href="campaign.html" class="text-orange-600 font-semibold pb-1 border-b-2 border-orange-600">Campaign</a>
+                <a href="#" class="hover:text-orange-600 transition-colors">Ziska</a>
+                <a href="#" class="hover:text-orange-600 transition-colors">Laporan</a>
+            </nav>
+
+            <!-- Aksi Header (Masuk) -->
+            <div>
+                <a href="#" class="btn-primary px-6 py-2 text-sm font-bold shadow-sm">
+                    Masuk
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================================================
+         2. MAIN CONTENT: DAFTAR CAMPAIGN & FILTER
+    ==================================================== -->
+    <main class="flex-grow py-8 md:py-12">
+        <div class="container-responsive">
+
+            <!-- PAGE TITLE & SUBTITLE -->
+            <div class="mb-8">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
+                    Daftar Campaign
+                </h1>
+                <p class="text-gray-600 text-sm sm:text-base max-w-2xl leading-relaxed">
+                    Pilih dan salurkan kebaikan Anda melalui berbagai program bantuan kemanusiaan, pendidikan, dan pemberdayaan masyarakat yang terverifikasi.
+                </p>
+            </div>
+
+            <!-- LAYOUT: Sidebar Filter (Kiri) & Grid Campaign (Kanan) -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+
+                <!-- ===============================================
+                     SIDEBAR FILTER
+                ================================================ -->
+                <aside class="lg:col-span-1 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-6">
+                    <h2 class="font-bold text-lg text-gray-900">Filter</h2>
+
+                    <!-- Kategori -->
+                    <div class="space-y-3">
+                        <span class="block font-semibold text-sm text-gray-800">Kategori</span>
+                        <div class="space-y-2.5 text-sm text-gray-700">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" checked class="w-4 h-4 text-orange-600 rounded border-gray-300 focus:ring-orange-500">
+                                <span class="font-medium text-orange-600">Semua Kategori</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 text-orange-600 rounded border-gray-300 focus:ring-orange-500">
+                                <span>Kemanusiaan</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 text-orange-600 rounded border-gray-300 focus:ring-orange-500">
+                                <span>Pendidikan</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 text-orange-600 rounded border-gray-300 focus:ring-orange-500">
+                                <span>Kesehatan</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 text-orange-600 rounded border-gray-300 focus:ring-orange-500">
+                                <span>Bencana Alam</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <hr class="border-gray-200">
+
+                    <!-- Lokasi -->
+                    <div class="space-y-2">
+                        <label for="lokasi" class="block font-semibold text-sm text-gray-800">Lokasi</label>
+                        <select id="lokasi" name="lokasi" class="text-sm bg-white">
+                            <option>Seluruh Indonesia</option>
+                            <option>Yogyakarta</option>
+                            <option>Jakarta</option>
+                            <option>Sumatera Barat</option>
+                        </select>
+                    </div>
+
+                    <!-- Urutkan -->
+                    <div class="space-y-2">
+                        <label for="urutkan" class="block font-semibold text-sm text-gray-800">Urutkan</label>
+                        <select id="urutkan" name="urutkan" class="text-sm bg-white">
+                            <option>Terbaru</option>
+                            <option>Paling Dermawan</option>
+                            <option>Hampir Tercapai</option>
+                        </select>
+                    </div>
+
+                    <!-- Tombol Reset Filter -->
+                    <div class="pt-2">
+                        <button type="button" class="btn-outline w-full text-sm font-semibold py-2.5">
+                            Reset Filter
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- ===============================================
+                     GRID CAMPAIGN CARDS (3 Kolom)
+                ================================================ -->
+                <div class="lg:col-span-3 space-y-8">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                        <!-- KARTU 1: Pendidikan -->
+                        <article class="card">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Kelas nyaman" 
+                                     class="w-full h-48 object-cover">
+                                <span class="absolute top-3 left-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                    Pendidikan
+                                </span>
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-1.5 text-xs text-gray-500 mb-1">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        <span>Banguntapan, Yogyakarta</span>
+                                    </div>
+                                    <h3 class="font-bold text-base leading-snug hover:text-orange-600 transition-colors">
+                                        <a href="#">Bantu Wujudkan Kelas yang Nyaman untuk Ruang Bertumbuh</a>
+                                    </h3>
+                                </div>
+                                
+                                <div class="space-y-2 pt-2 border-t border-gray-100">
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-500 font-medium">Terkumpul</span>
+                                        <span class="font-bold text-orange-600">75%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 75%;"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs font-medium pt-1">
+                                        <span class="font-bold text-gray-900">Rp 150.000.000</span>
+                                        <span class="text-gray-500">Target: Rp 200jt</span>
+                                    </div>
+                                    <a href="#" class="btn-primary w-full mt-2 text-sm">
+                                        Bantu Sekarang
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- KARTU 2: Kesehatan -->
+                        <article class="card">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Pengobatan medis" 
+                                     class="w-full h-48 object-cover">
+                                <span class="absolute top-3 left-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                    Kesehatan
+                                </span>
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-1.5 text-xs text-gray-500 mb-1">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        <span>Jakarta, Indonesia</span>
+                                    </div>
+                                    <h3 class="font-bold text-base leading-snug hover:text-orange-600 transition-colors">
+                                        <a href="#">Biaya Pengobatan Capai Puluhan Juta, Ibu Nurul Butuh Uluran Tangan Kita untuk Sembuh</a>
+                                    </h3>
+                                </div>
+                                
+                                <div class="space-y-2 pt-2 border-t border-gray-100">
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-500 font-medium">Terkumpul</span>
+                                        <span class="font-bold text-orange-600">42%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 42%;"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs font-medium pt-1">
+                                        <span class="font-bold text-gray-900">Rp 42.500.000</span>
+                                        <span class="text-gray-500">Target: Rp 100jt</span>
+                                    </div>
+                                    <a href="#" class="btn-primary w-full mt-2 text-sm">
+                                        Bantu Sekarang
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- KARTU 3: Bencana Alam -->
+                        <article class="card">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1546182990-dffe1be0951e?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Bantuan bencana" 
+                                     class="w-full h-48 object-cover">
+                                <span class="absolute top-3 left-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                    Bencana Alam
+                                </span>
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-1.5 text-xs text-gray-500 mb-1">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        <span>Sumatera Barat, Indonesia</span>
+                                    </div>
+                                    <h3 class="font-bold text-base leading-snug hover:text-orange-600 transition-colors">
+                                        <a href="#">Darurat: Bantuan Logistik & Air Bersih Korban Banjir</a>
+                                    </h3>
+                                </div>
+                                
+                                <div class="space-y-2 pt-2 border-t border-gray-100">
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-500 font-medium">Terkumpul</span>
+                                        <span class="font-bold text-orange-600">90%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 90%;"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs font-medium pt-1">
+                                        <span class="font-bold text-gray-900">Rp 450.000.000</span>
+                                        <span class="text-gray-500">Target: Rp 500jt</span>
+                                    </div>
+                                    <a href="#" class="btn-primary w-full mt-2 text-sm">
+                                        Bantu Sekarang
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- KARTU 4: Pemberdayaan -->
+                        <article class="card">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Pemberdayaan masyarakat" 
+                                     class="w-full h-48 object-cover">
+                                <span class="absolute top-3 left-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                    Pemberdayaan
+                                </span>
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-1.5 text-xs text-gray-500 mb-1">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        <span>Sumatra, Indonesia</span>
+                                    </div>
+                                    <h3 class="font-bold text-base leading-snug hover:text-orange-600 transition-colors">
+                                        <a href="#">Hadirkan Kado Ramadhan untuk Penyintas Bencana Alam di Sumatra</a>
+                                    </h3>
+                                </div>
+                                
+                                <div class="space-y-2 pt-2 border-t border-gray-100">
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-500 font-medium">Terkumpul</span>
+                                        <span class="font-bold text-orange-600">25%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 25%;"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs font-medium pt-1">
+                                        <span class="font-bold text-gray-900">Rp 12.500.000</span>
+                                        <span class="text-gray-500">Target: Rp 50jt</span>
+                                    </div>
+                                    <a href="#" class="btn-primary w-full mt-2 text-sm">
+                                        Bantu Sekarang
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- KARTU 5: Kemanusiaan -->
+                        <article class="card">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb9?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Kemanusiaan" 
+                                     class="w-full h-48 object-cover">
+                                <span class="absolute top-3 left-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                    Kemanusiaan
+                                </span>
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-1.5 text-xs text-gray-500 mb-1">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        <span>Sumatra, Indonesia</span>
+                                    </div>
+                                    <h3 class="font-bold text-base leading-snug hover:text-orange-600 transition-colors">
+                                        <a href="#">Tunaikan Fidyah untuk Penuhi Kebutuhan Pokok Penyintas Bencana Sumatra</a>
+                                    </h3>
+                                </div>
+                                
+                                <div class="space-y-2 pt-2 border-t border-gray-100">
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-500 font-medium">Terkumpul</span>
+                                        <span class="font-bold text-orange-600">60%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 60%;"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs font-medium pt-1">
+                                        <span class="font-bold text-gray-900">Rp 60.000.000</span>
+                                        <span class="text-gray-500">Target: Rp 100jt</span>
+                                    </div>
+                                    <a href="#" class="btn-primary w-full mt-2 text-sm">
+                                        Bantu Sekarang
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- KARTU 6: Religi -->
+                        <article class="card">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Religi" 
+                                     class="w-full h-48 object-cover">
+                                <span class="absolute top-3 left-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                    Religi
+                                </span>
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+                                <div>
+                                    <div class="flex items-center gap-1.5 text-xs text-gray-500 mb-1">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        <span>Kota Gede, Yogyakarta</span>
+                                    </div>
+                                    <h3 class="font-bold text-base leading-snug hover:text-orange-600 transition-colors">
+                                        <a href="#">Infak Teladan Pimpinan Wilayah Muhammadiyah Daerah Istimewa Yogyakarta</a>
+                                    </h3>
+                                </div>
+                                
+                                <div class="space-y-2 pt-2 border-t border-gray-100">
+                                    <div class="flex justify-between items-center text-xs">
+                                        <span class="text-gray-500 font-medium">Terkumpul</span>
+                                        <span class="font-bold text-orange-600">15%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 15%;"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs font-medium pt-1">
+                                        <span class="font-bold text-gray-900">Rp 120.000.000</span>
+                                        <span class="text-gray-500">Target: Rp 800jt</span>
+                                    </div>
+                                    <a href="#" class="btn-primary w-full mt-2 text-sm">
+                                        Bantu Sekarang
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- PAGINATION -->
+                    <nav class="flex justify-center items-center gap-2 pt-6" aria-label="Pagination">
+                        <a href="#" class="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-gray-100">&lt;</a>
+                        <a href="#" class="w-10 h-10 rounded-lg bg-orange-600 text-white font-bold flex items-center justify-center shadow-sm">1</a>
+                        <a href="#" class="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-100 font-medium">2</a>
+                        <a href="#" class="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-100 font-medium">3</a>
+                        <span class="px-2 text-gray-500">...</span>
+                        <a href="#" class="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-100 font-medium">12</a>
+                        <a href="#" class="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-gray-100">&gt;</a>
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ===================================================
+         3. FOOTER
+    ==================================================== -->
+    <footer class="bg-white text-gray-700 border-t border-gray-200 py-12 mt-auto">
+        <div class="container-responsive grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Kolom 1: Profil & Sosial -->
+            <div class="md:col-span-2 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-sm">
+                        JK
+                    </div>
+                    <span class="font-bold text-lg text-gray-900">Jalan Kebaikan</span>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed max-w-sm">
+                    Platform donasi digital terpercaya yang menghubungkan kebaikan Anda dengan mereka yang paling membutuhkan. Mari berbagi kebahagiaan untuk Indonesia yang lebih baik.
+                </p>
+                <div class="flex items-center gap-3 text-gray-500 pt-2">
+                    <!-- Icon Sosial -->
+                    <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-orange-50 hover:text-orange-600 transition-colors" title="QR Code">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-orange-50 hover:text-orange-600 transition-colors" title="Share">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-orange-50 hover:text-orange-600 transition-colors" title="Email">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kolom 2: Layanan -->
+            <div>
+                <h4 class="font-bold text-sm text-gray-900 uppercase tracking-wider mb-4">Layanan</h4>
+                <ul class="space-y-2.5 text-sm text-gray-600">
+                    <li><a href="#" class="hover:text-orange-600 transition-colors">Donasi Campaign</a></li>
+                    <li><a href="#" class="hover:text-orange-600 transition-colors">Zakat & Infaq</a></li>
+                    <li><a href="#" class="hover:text-orange-600 transition-colors">Wakaf Produktif</a></li>
+                    <li><a href="#" class="hover:text-orange-600 transition-colors">Program CSR</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3: Bantuan -->
+            <div>
+                <h4 class="font-bold text-sm text-gray-900 uppercase tracking-wider mb-4">Bantuan</h4>
+                <ul class="space-y-2.5 text-sm text-gray-600">
+                    <li><a href="#" class="hover:text-orange-600 transition-colors">FAQ</a></li>
+                    <li><a href="#" class="hover:text-orange-600 transition-colors">Syarat & Ketentuan</a></li>
+                    <li><a href="#" class="hover:text-orange-600 transition-colors">Kebijakan Privasi</a></li>
+                    <li><a href="#" class="hover:text-orange-600 transition-colors">Hubungi Kami</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="container-responsive mt-10 pt-6 border-t border-gray-200 text-center text-xs text-gray-500">
+            <p>&copy; 2024 Jalan Kebaikan. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

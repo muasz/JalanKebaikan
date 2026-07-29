@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Donasi - Jalan Kebaikan by LAZISMU DIY</title>
+  
+  <!-- Web App Manifest & Service Worker -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#c2410c">
+  
+  <!-- CSS Utama & Tailwind CSS via CDN -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#c2410c', // Oranye gelap (lulus kontras minimal 4.5:1)
+              hover: '#9a3412',
+            },
+            dark: '#1f2937'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-[#1f2937] font-sans min-h-screen flex justify-center">
+
+  <!-- Container utama mobile-first (max-width 480px) -->
+  <div class="w-full max-w-[480px] bg-white min-h-screen flex flex-col justify-between shadow-xl relative pb-24">
+
+    <!-- Header Atas Landmark -->
+    <header class="sticky top-0 bg-white border-b border-gray-200 z-40 px-3 py-2 flex items-center justify-between">
+      <!-- Tombol Kembali dengan label teks & min touch target 44x44px -->
+      <a href="detail-campaign.html" class="min-h-[44px] min-w-[44px] px-2 flex items-center gap-1.5 text-[#1f2937] hover:text-[#c2410c] font-medium text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c2410c]" aria-label="Kembali ke halaman detail campaign">
+        <svg class="w-5 h-5 text-[#c2410c]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        <span>Kembali</span>
+      </a>
+
+      <!-- H1 Page Title -->
+      <h1 class="text-base font-bold text-[#1f2937] text-center truncate px-2">
+        Formulir Donasi
+      </h1>
+
+      <!-- Spacer agar judul tetap rata tengah -->
+      <div class="w-20" aria-hidden="true"></div>
+    </header>
+
+    <!-- Main Content Landmark -->
+    <main id="main-content" class="flex-1 p-4 space-y-6">
+      
+      <!-- Kartu Ringkasan Campaign -->
+      <section aria-labelledby="heading-ringkasan" class="bg-gray-50 border border-gray-200 rounded-xl p-3 flex items-center gap-3">
+        <img src="images/campaign-1.jpg" alt="Anak-anak korban bencana banjir menerima bantuan paket pangan di Bantul" class="w-20 h-20 object-cover rounded-lg flex-shrink-0 bg-gray-200" width="80" height="80">
+        <div>
+          <span class="text-xs font-semibold text-[#c2410c] uppercase tracking-wide block mb-0.5">Anda Akan Berdonasi Untuk:</span>
+          <h2 id="heading-ringkasan" class="text-sm font-bold text-[#1f2937] line-clamp-2">
+            Bantu Korban Bencana Banjir & Longsor DIY
+          </h2>
+        </div>
+      </section>
+
+      <!-- Formulir Utama -->
+      <form id="form-donasi" action="#" method="POST" class="space-y-6" novalidate>
+        
+        <!-- Section: Nominal Donasi -->
+        <fieldset class="border border-gray-200 rounded-xl p-4 space-y-3">
+          <legend class="text-sm font-bold text-[#1f2937] px-1">
+            Nominal Donasi <span class="text-[#c2410c]">(wajib diisi)</span>
+          </legend>
+
+          <!-- 4 Tombol Preset Nominal (Masing-masing min 44x44px) -->
+          <div class="grid grid-cols-2 gap-3" role="radiogroup" aria-label="Pilihan nominal cepat">
+            <div>
+              <input type="radio" id="nom-10k" name="preset_nominal" value="10000" class="sr-only peer" checked>
+              <label for="nom-10k" class="min-h-[44px] flex items-center justify-center p-2 text-sm font-bold border-2 border-gray-300 rounded-lg cursor-pointer peer-checked:border-[#c2410c] peer-checked:bg-orange-50 peer-checked:text-[#c2410c] hover:border-gray-400 transition-colors">
+                Rp 10.000
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="nom-25k" name="preset_nominal" value="25000" class="sr-only peer">
+              <label for="nom-25k" class="min-h-[44px] flex items-center justify-center p-2 text-sm font-bold border-2 border-gray-300 rounded-lg cursor-pointer peer-checked:border-[#c2410c] peer-checked:bg-orange-50 peer-checked:text-[#c2410c] hover:border-gray-400 transition-colors">
+                Rp 25.000
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="nom-50k" name="preset_nominal" value="50000" class="sr-only peer">
+              <label for="nom-50k" class="min-h-[44px] flex items-center justify-center p-2 text-sm font-bold border-2 border-gray-300 rounded-lg cursor-pointer peer-checked:border-[#c2410c] peer-checked:bg-orange-50 peer-checked:text-[#c2410c] hover:border-gray-400 transition-colors">
+                Rp 50.000
+              </label>
+            </div>
+            <div>
+              <input type="radio" id="nom-100k" name="preset_nominal" value="100000" class="sr-only peer">
+              <label for="nom-100k" class="min-h-[44px] flex items-center justify-center p-2 text-sm font-bold border-2 border-gray-300 rounded-lg cursor-pointer peer-checked:border-[#c2410c] peer-checked:bg-orange-50 peer-checked:text-[#c2410c] hover:border-gray-400 transition-colors">
+                Rp 100.000
+              </label>
+            </div>
+          </div>
+
+          <!-- Input Nominal Lainnya -->
+          <div class="pt-2">
+            <label for="nominal-lainnya" class="block text-xs font-semibold text-[#1f2937] mb-1">
+              Atau masukkan nominal lainnya (Rp)
+            </label>
+            <input type="number" id="nominal-lainnya" name="nominal_lainnya" min="10000" step="5000" 
+                   aria-required="true" aria-describedby="nominal-error"
+                   class="w-full min-h-[44px] px-3 border border-gray-300 rounded-lg text-sm text-[#1f2937] focus:outline-none focus:ring-2 focus:ring-[#c2410c] focus:border-[#c2410c]">
+            <!-- Error message terhubung via aria-describedby -->
+            <p id="nominal-error" class="hidden text-xs text-red-600 font-semibold mt-1" role="alert">
+              Minimal donasi adalah Rp 10.000.
+            </p>
+          </div>
+        </fieldset>
+
+        <!-- Section: Metode Pembayaran -->
+        <fieldset class="border border-gray-200 rounded-xl p-4 space-y-3">
+          <legend class="text-sm font-bold text-[#1f2937] px-1">
+            Metode Pembayaran <span class="text-[#c2410c]">(wajib diisi)</span>
+          </legend>
+
+          <div class="space-y-2">
+            <!-- Opsi 1: Transfer Bank -->
+            <div class="flex items-center min-h-[44px] p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
+              <input type="radio" id="metode-transfer" name="metode_pembayaran" value="transfer_bank" required aria-required="true" checked
+                     class="w-5 h-5 text-[#c2410c] border-gray-300 focus:ring-[#c2410c]">
+              <label for="metode-transfer" class="ml-3 block text-sm font-medium text-[#1f2937] w-full cursor-pointer">
+                Transfer Bank (BSI, Mandiri, BCA, BRI)
+              </label>
+            </div>
+
+            <!-- Opsi 2: VA / eWallet -->
+            <div class="flex items-center min-h-[44px] p-3 border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
+              <input type="radio" id="metode-ewallet" name="metode_pembayaran" value="va_ewallet" required aria-required="true"
+                     class="w-5 h-5 text-[#c2410c] border-gray-300 focus:ring-[#c2410c]">
+              <label for="metode-ewallet" class="ml-3 block text-sm font-medium text-[#1f2937] w-full cursor-pointer">
+                Virtual Account & e-Wallet (Gopay, OVO, Dana, ShopeePay)
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Section: Data Donatur -->
+        <fieldset class="border border-gray-200 rounded-xl p-4 space-y-4">
+          <legend class="text-sm font-bold text-[#1f2937] px-1">
+            Data Donatur
+          </legend>
+
+          <!-- Input Nama -->
+          <div>
+            <label for="nama-donatur" class="block text-sm font-semibold text-[#1f2937] mb-1">
+              Nama Lengkap <span class="text-[#c2410c]">(wajib diisi)</span>
+            </label>
+            <input type="text" id="nama-donatur" name="nama" required aria-required="true"
+                   class="w-full min-h-[44px] px-3 border border-gray-300 rounded-lg text-sm text-[#1f2937] focus:outline-none focus:ring-2 focus:ring-[#c2410c] focus:border-[#c2410c]">
+          </div>
+
+          <!-- Input Nomor Handphone -->
+          <div>
+            <label for="no-hp" class="block text-sm font-semibold text-[#1f2937] mb-1">
+              Nomor Handphone / WhatsApp <span class="text-[#c2410c]">(wajib diisi)</span>
+            </label>
+            <input type="tel" id="no-hp" name="no_hp" required aria-required="true"
+                   class="w-full min-h-[44px] px-3 border border-gray-300 rounded-lg text-sm text-[#1f2937] focus:outline-none focus:ring-2 focus:ring-[#c2410c] focus:border-[#c2410c]">
+          </div>
+
+          <!-- Textarea Pesan -->
+          <div>
+            <label for="pesan-donasi" class="block text-sm font-semibold text-[#1f2937] mb-1">
+              Pesan atau Doa Anda (opsional)
+            </label>
+            <textarea id="pesan-donasi" name="pesan" rows="3"
+                      class="w-full p-3 border border-gray-300 rounded-lg text-sm text-[#1f2937] focus:outline-none focus:ring-2 focus:ring-[#c2410c] focus:border-[#c2410c]"></textarea>
+          </div>
+
+          <!-- Checkbox Sembunyikan Nama -->
+          <div class="flex items-center min-h-[44px]">
+            <input type="checkbox" id="anonim" name="anonim" value="1"
+                   class="w-5 h-5 text-[#c2410c] border-gray-300 rounded focus:ring-[#c2410c]">
+            <label for="anonim" class="ml-3 text-sm font-medium text-[#1f2937] cursor-pointer">
+              Sembunyikan nama saya (donasi sebagai hamba Allah)
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Tombol Lanjutkan Pembayaran (Full Width, Min height 44px) -->
+        <button type="submit" class="w-full min-h-[44px] py-3 bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold text-sm rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#c2410c]">
+          Lanjutkan Pembayaran
+        </button>
+
+      </form>
+
+    </main>
+
+    <!-- Bottom Navigation Landmark -->
+    <nav aria-label="Navigasi Utama Bawah" class="fixed bottom-0 w-full max-w-[480px] bg-white border-t border-gray-200 py-1.5 px-2 flex justify-around items-center z-50">
+      
+      <!-- Item Nav: Beranda -->
+      <a href="index.html" class="flex flex-col items-center justify-center min-h-[44px] min-w-[44px] px-2 text-gray-600 hover:text-[#c2410c] focus:outline-none focus:ring-2 focus:ring-[#c2410c] rounded-md">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        <span class="text-[11px] mt-0.5 font-medium">Beranda</span>
+      </a>
+
+      <!-- Item Nav: Campaign -->
+      <a href="campaign.html" class="flex flex-col items-center justify-center min-h-[44px] min-w-[44px] px-2 text-gray-600 hover:text-[#c2410c] focus:outline-none focus:ring-2 focus:ring-[#c2410c] rounded-md">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+        </svg>
+        <span class="text-[11px] mt-0.5 font-medium">Campaign</span>
+      </a>
+
+      <!-- Item Nav: Ziska -->
+      <a href="#" class="flex flex-col items-center justify-center min-h-[44px] min-w-[44px] px-2 text-gray-600 hover:text-[#c2410c] focus:outline-none focus:ring-2 focus:ring-[#c2410c] rounded-md">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span class="text-[11px] mt-0.5 font-medium">Ziska</span>
+      </a>
+
+      <!-- Item Nav: Laporan -->
+      <a href="#" class="flex flex-col items-center justify-center min-h-[44px] min-w-[44px] px-2 text-gray-600 hover:text-[#c2410c] focus:outline-none focus:ring-2 focus:ring-[#c2410c] rounded-md">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        <span class="text-[11px] mt-0.5 font-medium">Laporan</span>
+      </a>
+
+    </nav>
+
+  </div>
+
+  <!-- JavaScript Utama -->
+  <script src="js/main.js"></script>
+</body>
+</html>

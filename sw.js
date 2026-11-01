@@ -5,10 +5,8 @@
 ==========================================================
 */
 
-// Nama cache
-const CACHE_NAME = "jalan-kebaikan-v1";
 
-// Daftar aset statis yang akan disimpan ke cache
+const CACHE_NAME = "jalan-kebaikan-v1";
 const STATIC_ASSETS = [
     "/",
     "/index.html",
@@ -57,8 +55,6 @@ self.addEventListener("install", (event) => {
             })
 
     );
-
-    // Langsung aktif tanpa menunggu browser ditutup
     self.skipWaiting();
 
 });

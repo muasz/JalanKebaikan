@@ -1,7 +1,7 @@
 {
   "name": "Jalan Kebaikan by LAZISMU DIY",
   "short_name": "Jalan Kebaikan",
-  "description": "Platform donasi digital LAZISMU DIY untuk membantu masyarakat melalui program kemanusiaan, pendidikan, kesehatan, dan sosial.",
+  "description": "Platform donasi digital.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

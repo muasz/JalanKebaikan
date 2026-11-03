@@ -203,6 +203,108 @@ label{
 
 }
 
+.hero-media{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    width:100%;
+    max-width:none;
+}
+
+.hero-media img{
+    flex:0 0 33.333333%;
+    width:100%;
+    height:100%;
+    border-radius:0;
+    object-fit:cover;
+}
+
+.hero-slides{
+    display:flex;
+    width:300%;
+    height:100%;
+    transition:transform .6s ease;
+}
+
+.hero-slider-dots{
+    position:absolute;
+    right:24px;
+    bottom:20px;
+    z-index:1;
+    display:flex;
+    gap:8px;
+}
+
+.hero-slider-dot{
+    width:10px;
+    height:10px;
+    padding:0;
+    border:2px solid #fff;
+    border-radius:50%;
+    background:transparent;
+    opacity:.8;
+}
+
+.hero-slider-dot.is-active{
+    background:var(--primary);
+    opacity:1;
+}
+
+.hero-slider-dot:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+    .hero-slides{
+        transition:none;
+    }
+}
+
+.hero-banner{
+    position:relative;
+    isolation:isolate;
+    min-height:870px;
+    overflow:hidden;
+    border-radius:16px;
+}
+
+.hero-banner::after{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:linear-gradient(90deg, rgba(17,24,39,.68) 0%, rgba(17,24,39,.38) 42%, rgba(17,24,39,.08) 100%);
+    content:"";
+}
+
+.hero-content,
+.hero-stats{
+    position:relative;
+    z-index:1;
+}
+
+.hero-content{
+    color:#fff;
+}
+
+@media (max-width: 767px){
+    .hero-banner{
+        min-height:680px;
+    }
+
+    .hero-banner::after{
+        background:linear-gradient(180deg, rgba(17,24,39,.62) 0%, rgba(17,24,39,.18) 100%);
+    }
+
+    .hero-media{
+        max-width:none;
+    }
+
+    .hero-media img{
+        height:100%;
+    }
+}
+
 /* =========================
    BOTTOM NAVIGATION
 ========================= */
@@ -393,6 +495,142 @@ label{
 
     border:0;
 
+}
+
+/* =========================
+   SITE HEADER
+========================= */
+
+.site-header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    min-height:76px;
+    padding-top:12px;
+    padding-bottom:12px;
+}
+
+.site-brand{
+    flex:0 0 auto;
+}
+
+.site-brand-mark{
+    width:44px;
+    height:44px;
+    font-size:18px;
+}
+
+.site-brand > span{
+    font-size:20px;
+    line-height:1.2;
+}
+
+.site-header-inner > nav{
+    flex:1 1 auto;
+    justify-content:center;
+}
+
+.site-header-inner > nav a{
+    padding-top:8px;
+    padding-bottom:8px;
+    font-size:15px;
+    white-space:nowrap;
+}
+
+.site-header-action{
+    flex:0 0 auto;
+}
+
+.site-header-action .btn-primary{
+    width:auto;
+    min-height:44px;
+    padding:10px 18px;
+    border-radius:10px;
+    font-size:14px;
+    white-space:nowrap;
+}
+
+.site-mobile-menu{
+    margin-left:auto;
+}
+
+.site-mobile-menu-toggle{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    list-style:none;
+}
+
+.site-mobile-menu-toggle::-webkit-details-marker{
+    display:none;
+}
+
+.site-menu-icon{
+    position:relative;
+    display:inline-block;
+    width:18px;
+    height:14px;
+    border-top:2px solid currentColor;
+    border-bottom:2px solid currentColor;
+}
+
+.site-menu-icon::after{
+    position:absolute;
+    top:4px;
+    left:0;
+    width:18px;
+    border-top:2px solid currentColor;
+    content:"";
+}
+
+.site-mobile-menu[open] .site-menu-icon{
+    border-top-color:transparent;
+    border-bottom-color:transparent;
+}
+
+.site-mobile-menu[open] .site-menu-icon::after{
+    top:6px;
+    transform:rotate(45deg);
+}
+
+.site-mobile-menu nav{
+    min-width:220px;
+}
+
+.site-search{
+    flex:0 0 auto;
+}
+
+@media (max-width: 1279px){
+    .site-header-inner > nav{
+        gap:16px;
+    }
+
+    .site-search{
+        display:none !important;
+    }
+}
+
+@media (max-width: 1023px){
+    .site-header-inner{
+        flex-wrap:wrap;
+    }
+
+    .site-header-action{
+        order:4;
+        width:100%;
+    }
+
+    .site-header-action .btn-primary{
+        width:100%;
+    }
+}
+
+@media (min-width: 1024px){
+    .site-mobile-menu{
+        display:none;
+    }
 }
 
 /* =========================

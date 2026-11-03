@@ -1,12 +1,12 @@
 /*
 ==========================================================
  Service Worker - Jalan Kebaikan
- Nama Cache : jalan-kebaikan-v1
+ Nama Cache : jalan-kebaikan-v4
 ==========================================================
 */
 
 
-const CACHE_NAME = "jalan-kebaikan-v1";
+const CACHE_NAME = "jalan-kebaikan-v4";
 const STATIC_ASSETS = [
     "/",
     "/index.html",
@@ -16,6 +16,9 @@ const STATIC_ASSETS = [
 
     "/css/style.css",
     "/js/main.js",
+    "/css/assistant.css",
+    "/js/assistant.js",
+    "/js/hero-slider.js",
 
     "/manifest.json",
 
@@ -24,7 +27,10 @@ const STATIC_ASSETS = [
     "/icons/icon-512.png",
 
     // Images
-    "/images/hero.jpg",
+    "/images/hero-illustration.svg",
+    "/images/Header/Thumbnail-Untuk-Artikel-Website-7.jpg",
+    "/images/Header/ver3.jpg",
+    "/images/Header/versi-1.jpg",
     "/images/campaign1.jpg",
     "/images/campaign2.jpg",
     "/images/campaign3.jpg",

@@ -9,35 +9,58 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- File CSS Utama Anda -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=3">
     <link rel="stylesheet" href="css/accessibility.css">
+    <link rel="stylesheet" href="css/assistant.css">
 </head>
 <body class="min-h-screen flex flex-col">
 
     <!-- ===================================================
      NAVBAR / HEADER (Diperbarui agar sama dengan campaign.html) ==================================================== -->
-<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-    <div class="container-responsive py-4 flex items-center justify-between">
+<header class="site-header bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="site-header-inner container-responsive">
         <!-- Brand Logo -->
-        <a href="index.html" class="flex items-center gap-3 focus-visible:outline-none">
-            <div class="w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-xl">
+        <a href="index.html" class="site-brand flex items-center gap-3 focus-visible:outline-none">
+            <div class="site-brand-mark w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-xl">
                 JK
             </div>
             <span class="font-bold text-xl text-gray-900">Jalan Kebaikan</span>
         </a>
 
-        <!-- Navigasi Desktop -->
-        <nav class="hidden md:flex items-center gap-8 font-medium text-gray-700" aria-label="Navigasi Utama">
-            <a href="index.html" class="text-orange-600 font-semibold pb-1 border-b-2 border-orange-600">Beranda</a>
-            <a href="campaign.html" class="hover:text-orange-600 transition-colors">Campaign</a>
-            <a href="#" class="hover:text-orange-600 transition-colors">Ziska</a>
-            <a href="#" class="hover:text-orange-600 transition-colors">Laporan</a>
+        <!-- Navigasi utama mengikuti struktur LAZISMU DIY -->
+        <nav class="hidden lg:flex items-center gap-6 font-medium text-gray-700" aria-label="Navigasi Utama">
+            <a href="#beranda" class="text-orange-600 font-semibold pb-1 border-b-2 border-orange-600">Home</a>
+            <a href="#tentang" class="hover:text-orange-600 transition-colors">Tentang Kami</a>
+            <a href="#program" class="hover:text-orange-600 transition-colors">Program</a>
+            <a href="#layanan" class="hover:text-orange-600 transition-colors">Layanan</a>
+            <a href="#berita" class="hover:text-orange-600 transition-colors">Berita</a>
+            <a href="#blog" class="hover:text-orange-600 transition-colors">Blog</a>
         </nav>
 
+        <details class="site-mobile-menu lg:hidden relative">
+            <summary class="site-mobile-menu-toggle min-h-[44px] px-4 py-2 border border-gray-300 rounded-lg font-semibold text-gray-700 cursor-pointer">
+                <span class="site-menu-icon" aria-hidden="true"></span>
+                <span>Menu</span>
+            </summary>
+            <nav class="absolute right-0 top-12 z-10 w-56 rounded-xl border border-gray-200 bg-white p-3 shadow-lg" aria-label="Navigasi Mobile">
+                <a href="#beranda" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Home</a>
+                <a href="#tentang" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Tentang Kami</a>
+                <a href="#program" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Program</a>
+                <a href="#layanan" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Layanan</a>
+                <a href="#berita" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Berita</a>
+                <a href="#blog" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Blog</a>
+            </nav>
+        </details>
+
+        <form class="site-search hidden xl:flex items-center gap-2" role="search" aria-label="Pencarian website">
+            <label class="sr-only" for="searchCampaign">Cari di website</label>
+            <input id="searchCampaign" type="search" class="w-40 rounded-lg border border-gray-300 px-3 py-2 text-sm" placeholder="Cari..." />
+        </form>
+
         <!-- Aksi Header (Masuk) -->
-        <div>
-            <a href="#" class="btn-primary px-6 py-2 text-sm font-bold shadow-sm">
-                Masuk
+        <div class="site-header-action">
+            <a href="campaign.html" class="btn-primary px-6 py-2 text-sm font-bold shadow-sm">
+                Donasi Sekarang
             </a>
         </div>
     </div>
@@ -49,10 +72,10 @@
     <main class="flex-grow">
 
         <!-- HERO SECTION -->
-        <section id="beranda" class="py-6 md:py-10">
+        <section id="beranda" class="pb-6 md:pb-10">
             <div class="container-responsive">
                 <div class="hero-banner p-6 sm:p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div class="max-w-xl">
+                    <div class="hero-content max-w-xl">
                         <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
                             #MemberiUntukNegeri
                         </span>
@@ -71,8 +94,20 @@
                             </a>
                         </div>
                     </div>
+                    <div class="hero-media" aria-label="Galeri gambar utama Jalan Kebaikan">
+                        <div class="hero-slides">
+                            <img src="images/Header/Thumbnail-Untuk-Artikel-Website-7.jpg" alt="Program kebaikan Jalan Kebaikan" width="420" height="300">
+                            <img src="images/Header/ver3.jpg" alt="Kegiatan sosial LAZISMU DIY" width="420" height="300">
+                            <img src="images/Header/versi-1.jpg" alt="Penyaluran bantuan kepada masyarakat" width="420" height="300">
+                        </div>
+                        <div class="hero-slider-dots" role="tablist" aria-label="Pilih gambar hero">
+                            <button type="button" class="hero-slider-dot is-active" role="tab" aria-selected="true" aria-label="Tampilkan gambar 1"></button>
+                            <button type="button" class="hero-slider-dot" role="tab" aria-selected="false" aria-label="Tampilkan gambar 2"></button>
+                            <button type="button" class="hero-slider-dot" role="tab" aria-selected="false" aria-label="Tampilkan gambar 3"></button>
+                        </div>
+                    </div>
                     <!-- Statistik Singkat di dalam Hero -->
-                    <div class="w-full md:w-auto bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-center sm:text-left grid grid-cols-2 gap-6 min-w-[260px]">
+                    <div class="hero-stats w-full md:w-auto bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-center sm:text-left grid grid-cols-2 gap-6 min-w-[260px]">
                         <div>
                             <span class="block text-2xl sm:text-3xl font-extrabold">12.500+</span>
                             <span class="text-xs sm:text-sm text-white/80">Donatur Aktif</span>
@@ -233,6 +268,84 @@
             </div>
         </section>
 
+        <section id="tentang" class="border-t border-gray-200 bg-white py-12 md:py-16">
+            <div class="container-responsive grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
+                <div>
+                    <span class="badge mb-3">Tentang Kami</span>
+                    <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Bergerak bersama untuk kebaikan di Yogyakarta</h2>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Jalan Kebaikan adalah platform digital untuk menyalurkan zakat, infak, dan sedekah secara amanah, transparan, dan mudah diakses oleh masyarakat.
+                </p>
+            </div>
+        </section>
+
+        <section id="layanan" class="bg-gray-50 py-12 md:py-16">
+            <div class="container-responsive">
+                <div class="mb-8 max-w-2xl">
+                    <span class="badge mb-3">Layanan</span>
+                    <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Bagaimana kami dapat membantu Anda?</h2>
+                </div>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <a href="formulir-donasi.html" class="card p-5 hover:border-orange-600">
+                        <h3 class="font-bold text-gray-900">Konsultasi Zakat</h3>
+                        <p class="mt-2 text-sm text-gray-600">Dapatkan informasi dasar sebelum menunaikan zakat.</p>
+                    </a>
+                    <a href="formulir-donasi.html" class="card p-5 hover:border-orange-600">
+                        <h3 class="font-bold text-gray-900">Jemput Infak & Zakat</h3>
+                        <p class="mt-2 text-sm text-gray-600">Salurkan kebaikan dengan layanan yang praktis.</p>
+                    </a>
+                    <a href="#program" class="card p-5 hover:border-orange-600">
+                        <h3 class="font-bold text-gray-900">Kolaborasi Program</h3>
+                        <p class="mt-2 text-sm text-gray-600">Dukung program pemberdayaan masyarakat.</p>
+                    </a>
+                    <a href="formulir-donasi.html" class="card p-5 hover:border-orange-600">
+                        <h3 class="font-bold text-gray-900">Bayar Zakat Online</h3>
+                        <p class="mt-2 text-sm text-gray-600">Mulai pembayaran melalui platform digital.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="berita" class="py-12 md:py-16">
+            <div class="container-responsive">
+                <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                        <span class="badge mb-3">Berita</span>
+                        <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Kabar Jalan Kebaikan</h2>
+                    </div>
+                    <a href="#blog" class="font-semibold text-orange-700 hover:text-orange-900">Lihat semua berita</a>
+                </div>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                    <article class="card p-5">
+                        <span class="text-sm text-gray-500">Kemanusiaan</span>
+                        <h3 class="mt-2 font-bold text-gray-900">Bersama membantu masyarakat yang membutuhkan</h3>
+                        <p class="mt-2 text-sm text-gray-600">Ikuti kabar terbaru dari program kebaikan kami.</p>
+                    </article>
+                    <article class="card p-5">
+                        <span class="text-sm text-gray-500">Pendidikan</span>
+                        <h3 class="mt-2 font-bold text-gray-900">Menjaga harapan melalui dukungan pendidikan</h3>
+                        <p class="mt-2 text-sm text-gray-600">Dukungan Anda membantu penerima manfaat tumbuh.</p>
+                    </article>
+                    <article class="card p-5">
+                        <span class="text-sm text-gray-500">Pemberdayaan</span>
+                        <h3 class="mt-2 font-bold text-gray-900">Menguatkan kemandirian bersama</h3>
+                        <p class="mt-2 text-sm text-gray-600">Kebaikan yang dikelola secara amanah dan transparan.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="border-t border-gray-200 bg-white py-12 md:py-16">
+            <div class="container-responsive">
+                <span class="badge mb-3">Blog</span>
+                <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl">Artikel dan Inspirasi</h2>
+                <p class="mt-3 max-w-2xl text-gray-600">
+                    Temukan inspirasi tentang zakat, kepedulian sosial, dan cerita dari penerima manfaat Jalan Kebaikan.
+                </p>
+            </div>
+        </section>
+
     </main>
 
     <!-- ===================================================
@@ -257,9 +370,12 @@
             <div>
                 <h4 class="font-semibold text-sm uppercase tracking-wider text-gray-300 mb-4">Navigasi</h4>
                 <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="#beranda" class="hover:text-white transition-colors">Beranda</a></li>
-                    <li><a href="#program" class="hover:text-white transition-colors">Daftar Program</a></li>
-                    <li><a href="#tentang" class="hover:text-white transition-colors">Tentang Lazismu</a></li>
+                    <li><a href="#beranda" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#tentang" class="hover:text-white transition-colors">Tentang Kami</a></li>
+                    <li><a href="#program" class="hover:text-white transition-colors">Program</a></li>
+                    <li><a href="#layanan" class="hover:text-white transition-colors">Layanan</a></li>
+                    <li><a href="#berita" class="hover:text-white transition-colors">Berita</a></li>
+                    <li><a href="#blog" class="hover:text-white transition-colors">Blog</a></li>
                     <li><a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a></li>
                 </ul>
             </div>
@@ -283,5 +399,7 @@
     </footer>
 
     <script src="js/accessibility.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="js/hero-slider.js"></script>
 </body>
 </html>

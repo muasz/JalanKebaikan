@@ -391,3 +391,119 @@ body.accessibility-spacing-active svg {
         transition: none;
     }
 }
+
+/* Keep the toolbar dimensions stable while the page text is scaled. */
+.accessibility-toolbar {
+    font-size: 16px;
+}
+
+.accessibility-button {
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+}
+
+.accessibility-button svg {
+    width: 32px;
+    height: 32px;
+}
+
+.accessibility-panel {
+    right: 20px;
+    bottom: 96px;
+    width: min(360px, calc(100vw - 32px));
+    max-height: min(672px, calc(100vh - 112px));
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.accessibility-panel-header {
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.accessibility-panel-title {
+    font-size: 18px;
+}
+
+.accessibility-panel-description {
+    font-size: 14px;
+}
+
+.accessibility-close,
+.accessibility-control,
+.accessibility-reset {
+    min-height: 44px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.accessibility-close {
+    width: 44px;
+    font-size: 20px;
+}
+
+.accessibility-section {
+    padding: 16px 0;
+}
+
+.accessibility-section-title {
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.accessibility-action-row,
+.accessibility-choice-row,
+.accessibility-spacing-row,
+.accessibility-tts-controls {
+    gap: 8px;
+}
+
+.accessibility-control {
+    padding: 8px 12px;
+}
+
+.accessibility-spacing-row {
+    min-height: 44px;
+    margin: 10px 0;
+}
+
+.accessibility-spacing-label {
+    min-width: 112px;
+    font-size: 14px;
+}
+
+.accessibility-spacing-controls {
+    gap: 6px;
+}
+
+.accessibility-spacing-controls .accessibility-control {
+    min-width: 40px;
+    padding: 6px 8px;
+}
+
+.accessibility-spacing-value {
+    min-width: 48px;
+    font-size: 13px;
+}
+
+.accessibility-tts-description,
+.accessibility-tts-status {
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .accessibility-button {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .accessibility-panel {
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        max-height: 90vh;
+        border-radius: 16px 16px 0 0;
+    }
+}

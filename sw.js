@@ -1,12 +1,12 @@
 /*
 ==========================================================
  Service Worker - Jalan Kebaikan
- Nama Cache : jalan-kebaikan-v4
+ Nama Cache : jalan-kebaikan-v5
 ==========================================================
 */
 
 
-const CACHE_NAME = "jalan-kebaikan-v4";
+const CACHE_NAME = "jalan-kebaikan-v5";
 const STATIC_ASSETS = [
     "/",
     "/index.html",
@@ -18,6 +18,7 @@ const STATIC_ASSETS = [
     "/js/main.js",
     "/css/assistant.css",
     "/js/assistant.js",
+    "/js/speech-manager.js",
     "/js/hero-slider.js",
 
     "/manifest.json",

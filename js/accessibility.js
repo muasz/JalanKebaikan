@@ -231,7 +231,8 @@
             stop: toolbar.querySelector('[data-tts-action="stop"]')
         };
         const status = toolbar.querySelector("[data-tts-status]");
-        const supported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+        const speech = window.JalanKebaikanSpeech;
+        const supported = Boolean(speech && speech.supported);
         let utterances = [];
         let currentIndex = 0;
         let isPaused = false;
@@ -250,9 +251,7 @@
 
         function chooseVoice() {
             if (!supported) return null;
-            const voices = window.speechSynthesis.getVoices();
-            selectedVoice = voices.find((voice) => voice.lang.toLowerCase() === "id-id")
-                || voices.find((voice) => voice.lang.toLowerCase().startsWith("id"));
+            selectedVoice = speech.chooseVoice();
             return selectedVoice;
         }
 
@@ -302,20 +301,25 @@
                 return;
             }
 
-            const utterance = new SpeechSynthesisUtterance(utterances[currentIndex]);
-            utterance.lang = "id-ID";
-            if (selectedVoice) utterance.voice = selectedVoice;
-            utterance.onend = () => {
+            speech.speak(utterances[currentIndex], {
+                owner: "accessibility",
+                voice: selectedVoice,
+                onend: () => {
                 currentIndex += 1;
                 speakNext();
-            };
-            utterance.onerror = (event) => {
-                if (event.error !== "canceled" && event.error !== "interrupted") {
+                },
+                oncancel: () => {
+                    utterances = [];
+                    currentIndex = 0;
+                    isPaused = false;
+                    updateControls(false);
+                    setStatus("Pembacaan dihentikan oleh fitur lain.");
+                },
+                onerror: () => {
                     setStatus("Pembacaan tidak dapat dilanjutkan.");
                     updateControls(false);
                 }
-            };
-            window.speechSynthesis.speak(utterance);
+            });
         }
 
         function play() {
@@ -326,7 +330,7 @@
                 return;
             }
 
-            window.speechSynthesis.cancel();
+            speech.cancel();
             utterances = [];
             text.split(/\s+/).forEach((word) => {
                 const current = utterances[utterances.length - 1] || "";
@@ -347,11 +351,11 @@
         function togglePause() {
             if (!supported || !utterances.length) return;
             if (window.speechSynthesis.paused) {
-                window.speechSynthesis.resume();
+                speech.resume();
                 isPaused = false;
                 setStatus("Sedang membaca.");
             } else {
-                window.speechSynthesis.pause();
+                speech.pause();
                 isPaused = true;
                 setStatus("Dijeda.");
             }
@@ -360,7 +364,7 @@
 
         function stop() {
             if (!supported) return;
-            window.speechSynthesis.cancel();
+            speech.cancel();
             utterances = [];
             currentIndex = 0;
             isPaused = false;

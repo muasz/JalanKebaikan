@@ -79,7 +79,8 @@
         const recognition = SpeechRecognition ? new SpeechRecognition() : null;
         let isListening = false;
         let pendingTopic = "";
-        const speechSupported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+        const speech = window.JalanKebaikanSpeech;
+        const speechSupported = Boolean(speech && speech.supported);
         let voiceFeedbackEnabled = speechSupported && window.localStorage.getItem("jalan-kebaikan-assistant-voice") !== "off";
         let selectedVoice = null;
         let welcomeSpoken = false;
@@ -100,10 +101,7 @@
 
         function chooseVoice() {
             if (!speechSupported) return null;
-            const voices = window.speechSynthesis.getVoices();
-            selectedVoice = voices.find((voice) => voice.lang.toLowerCase() === "id-id")
-                || voices.find((voice) => voice.lang.toLowerCase().startsWith("id"))
-                || null;
+            selectedVoice = speech.chooseVoice();
             return selectedVoice;
         }
 
@@ -117,15 +115,14 @@
 
         function speakAssistantMessage(text) {
             if (!voiceFeedbackEnabled || !speechSupported) return;
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = "id-ID";
-            const voice = chooseVoice();
-            if (voice) utterance.voice = voice;
-            utterance.onstart = () => setListeningStatus("Sedang memberi feedback suara...");
-            utterance.onend = () => setListeningStatus("Siap membantu");
-            utterance.onerror = () => setListeningStatus("Feedback suara tidak dapat diputar.");
-            window.speechSynthesis.speak(utterance);
+            speech.speak(text, {
+                owner: "assistant",
+                voice: chooseVoice(),
+                onstart: () => setListeningStatus("Sedang memberi feedback suara..."),
+                onend: () => setListeningStatus("Siap membantu"),
+                oncancel: () => setListeningStatus("Feedback suara dihentikan oleh fitur lain."),
+                onerror: () => setListeningStatus("Feedback suara tidak dapat diputar.")
+            });
         }
 
         function activateAccessibilityControl(selector) {
@@ -135,55 +132,108 @@
             return true;
         }
 
+        function matchesAny(command, patterns) {
+            return patterns.some((pattern) => pattern.test(command));
+        }
+
+        function getSpacingValue(key) {
+            const output = document.querySelector(`[data-spacing-row='${key}'] output`);
+            return output ? output.textContent.trim() : "";
+        }
+
+        function changeSpacing(command, key, label) {
+            const increase = matchesAny(command, [
+                /(?:tambah|tambahkan|perbesar|perlebar|renggangkan|naikkan)/
+            ]);
+            const decrease = matchesAny(command, [
+                /(?:kurangi|kurangilah|perkecil|kecilkan|turunkan|rapatkan)/
+            ]);
+
+            if (!increase && !decrease) {
+                const currentValue = getSpacingValue(key);
+                return `Jarak ${label} saat ini ${currentValue || "belum tersedia"}. Mau ditambah atau dikurangi?`;
+            }
+
+            const direction = decrease ? "-1" : "1";
+            const selector = `[data-spacing-row='${key}'] [data-spacing-change='${direction}']`;
+
+            if (!activateAccessibilityControl(selector)) {
+                return "Pengaturan jarak teks belum tersedia di halaman ini.";
+            }
+
+            const currentValue = getSpacingValue(key);
+            return `Jarak ${label} sudah ${direction === "1" ? "ditambah" : "dikurangi"} menjadi ${currentValue}.`;
+        }
+
         function applyAccessibilityCommand(text) {
             const command = normalizeCommand(text);
 
-            if (
-                command === "reset"
-                || command.includes("reset semua")
-                || command.includes("reset pengaturan")
-                || command.includes("kembalikan semua pengaturan")
-                || command.includes("kembalikan pengaturan")
-            ) {
+            if (matchesAny(command, [
+                /^(reset|kembalikan|pulihkan)$/,
+                /(?:reset|kembalikan|pulihkan).*(?:semua|pengaturan|tampilan)/,
+                /mulai kembali dari awal/
+            ])) {
                 return activateAccessibilityControl("[data-reset-all]")
                     ? "Semua pengaturan aksesibilitas sudah direset."
                     : "Tombol reset belum tersedia di halaman ini.";
             }
 
-            if (command.includes("perbesar tulisan") || command.includes("perbesar teks")) {
+            if (matchesAny(command, [
+                /(?:perbesar|besarkan|tingkatkan|naikkan).*(?:tulisan|teks|huruf)/,
+                /(?:tulisan|teks|huruf).*(?:terlalu kecil|sangat kecil|susah dibaca|sulit dibaca)/,
+                /saya (?:susah|sulit) membaca/
+            ])) {
                 return activateAccessibilityControl("[data-scale-change='1']")
                     ? "Ukuran tulisan sudah diperbesar."
                     : "Pengaturan ukuran tulisan belum tersedia di halaman ini.";
             }
 
-            if (command.includes("perkecil tulisan") || command.includes("perkecil teks")) {
+            if (matchesAny(command, [
+                /(?:perkecil|kecilkan|turunkan|kurangi).*(?:tulisan|teks|huruf)/,
+                /(?:tulisan|teks|huruf).*(?:terlalu besar|kebesaran)/
+            ])) {
                 return activateAccessibilityControl("[data-scale-change='-1']")
                     ? "Ukuran tulisan sudah diperkecil."
                     : "Pengaturan ukuran tulisan belum tersedia di halaman ini.";
             }
 
-            if (command.includes("kontras tinggi")) {
+            if (matchesAny(command, [
+                /kontras.*(?:tinggi|lebih jelas|lebih terang)/,
+                /(?:susah|sulit).*membedakan.*(?:teks|warna)/
+            ])) {
                 return activateAccessibilityControl("[data-contrast='high']")
                     ? "Kontras tinggi sudah diaktifkan."
                     : "Pengaturan kontras belum tersedia di halaman ini.";
             }
 
-            if (command.includes("kontras normal") || command.includes("matikan kontras")) {
+            if (matchesAny(command, [
+                /kontras.*(?:normal|biasa|mati)/,
+                /kembali.*(?:warna|tampilan).*normal/
+            ])) {
                 return activateAccessibilityControl("[data-contrast='normal']")
                     ? "Mode kontras normal sudah diaktifkan."
                     : "Pengaturan kontras belum tersedia di halaman ini.";
             }
 
-            if (command.includes("jarak teks") || command.includes("spasi teks")) {
-                const controls = [
-                    "[data-spacing-row='letterSpacing'] [data-spacing-change='1']",
-                    "[data-spacing-row='wordSpacing'] [data-spacing-change='1']",
-                    "[data-spacing-row='lineHeight'] [data-spacing-change='1']"
-                ];
-                const applied = controls.filter(activateAccessibilityControl).length;
-                return applied === controls.length
-                    ? "Jarak huruf, kata, dan baris sudah ditambah."
-                    : "Pengaturan jarak teks belum tersedia di halaman ini.";
+            if (matchesAny(command, [
+                /(?:jarak|spasi).*(?:huruf|antar huruf|letter)/,
+                /huruf.*(?:lebih renggang|lebih lebar)/
+            ])) {
+                return changeSpacing(command, "letterSpacing", "huruf");
+            }
+
+            if (matchesAny(command, [
+                /(?:jarak|spasi).*(?:kata|antar kata|word)/,
+                /kata.*(?:lebih renggang|lebih lebar)/
+            ])) {
+                return changeSpacing(command, "wordSpacing", "kata");
+            }
+
+            if (matchesAny(command, [
+                /(?:jarak|spasi).*(?:baris|tinggi baris|line)/,
+                /baris.*(?:lebih renggang|lebih lebar)/
+            ])) {
+                return changeSpacing(command, "lineHeight", "baris");
             }
 
             return "";
@@ -270,6 +320,15 @@
                         text: action
                             ? "Panel Pengaturan Aksesibilitas belum tersedia di halaman ini."
                             : "Panel Pengaturan Aksesibilitas sudah saya buka. Anda dapat memilih ukuran tulisan, kontras, atau jarak teks."
+                    };
+                }
+
+                if (matchesAny(command, [
+                    /(?:atur|ubah|sesuaikan|tambah|kurangi).*(?:jarak|spasi)/,
+                    /(?:jarak|spasi).*(?:teks|tulisan)/
+                ])) {
+                    return {
+                            text: "Jarak teks terdiri dari jarak huruf, jarak kata, dan jarak baris. Mana yang ingin Anda ubah?"
                     };
                 }
 
@@ -407,7 +466,7 @@
             voiceFeedbackEnabled = !voiceFeedbackEnabled;
             window.localStorage.setItem("jalan-kebaikan-assistant-voice", voiceFeedbackEnabled ? "on" : "off");
             if (!voiceFeedbackEnabled) {
-                window.speechSynthesis.cancel();
+                speech.cancel();
                 setListeningStatus("Feedback suara dimatikan");
             } else {
                 chooseVoice();
@@ -495,10 +554,10 @@
         window.addEventListener("pagehide", stopListening);
         window.addEventListener("beforeunload", stopListening);
         window.addEventListener("pagehide", () => {
-            if (speechSupported) window.speechSynthesis.cancel();
+            if (speechSupported) speech.cancel();
         });
         window.addEventListener("beforeunload", () => {
-            if (speechSupported) window.speechSynthesis.cancel();
+            if (speechSupported) speech.cancel();
         });
     }
 

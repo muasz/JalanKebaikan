@@ -29,39 +29,52 @@
             <span class="font-bold text-xl text-gray-900">Jalan Kebaikan</span>
         </a>
 
-        <!-- Navigasi utama mengikuti struktur LAZISMU DIY -->
-        <nav class="hidden lg:flex items-center gap-6 font-medium text-gray-700" aria-label="Navigasi Utama">
-            <a href="#beranda" class="text-orange-600 font-semibold pb-1 border-b-2 border-orange-600">Home</a>
-            <a href="#tentang" class="hover:text-orange-600 transition-colors">Tentang Kami</a>
-            <a href="#program" class="hover:text-orange-600 transition-colors">Program</a>
-            <a href="#layanan" class="hover:text-orange-600 transition-colors">Layanan</a>
-            <a href="#berita" class="hover:text-orange-600 transition-colors">Berita</a>
-            <a href="#blog" class="hover:text-orange-600 transition-colors">Blog</a>
-        </nav>
+<nav class="hidden lg:flex items-center gap-7 font-medium text-gray-700" aria-label="Navigasi Utama">
 
-        <details class="site-mobile-menu lg:hidden relative">
-            <summary class="site-mobile-menu-toggle min-h-[44px] px-4 py-2 border border-gray-300 rounded-lg font-semibold text-gray-700 cursor-pointer">
-                <span class="site-menu-icon" aria-hidden="true"></span>
-                <span>Menu</span>
-            </summary>
-            <nav class="absolute right-0 top-12 z-10 w-56 rounded-xl border border-gray-200 bg-white p-3 shadow-lg" aria-label="Navigasi Mobile">
-                <a href="#beranda" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Home</a>
-                <div class="jk-dropdown">
-                    <button type="button" class="jk-dropdown-toggle">
-                        Tentang Kami
-                        <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="m6 9 6 6 6-6"/>
-                        </svg>
-                    </button>
-                <div class="jk-dropdown-menu">
-                    <a href="#program" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Program</a>
-                    <a href="#layanan" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Layanan</a>
-                    <a href="#berita" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Berita</a>
-                    <a href="#blog" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Blog</a>
-                </div>
-                
-            </nav>
+    <a href="#beranda"
+       class="text-orange-600 font-semibold hover:text-orange-700">
+        Home
+    </a>
+
+    <!-- DROPDOWN TENTANG KAMI -->
+    <div class="jk-dropdown">
+        <button type="button" class="jk-dropdown-toggle">
+            Tentang Kami
+            <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"/>
+            </svg>
+        </button>
+
+        <div class="jk-dropdown-menu">
+            <a href="#tentang">Latar Belakang</a>
+            <a href="#visi-misi">Visi dan Misi</a>
+            <a href="#struktur-pengelola">Struktur Pengelola</a>
+            <a href="#kebijakan-strategis">Kebijakan Strategis</a>
+            <a href="#kebijakan-mutu">Kebijakan Mutu</a>
+            <a href="#laporan">Laporan</a>
+            <a href="#mitra">Mitra</a>
+        </div>
+    </div>
+
+    <a href="#program" class="hover:text-orange-600 transition-colors">
+        Program
+    </a>
+
+    <a href="#layanan" class="hover:text-orange-600 transition-colors">
+        Layanan
+    </a>
+
+    <a href="#berita" class="hover:text-orange-600 transition-colors">
+        Berita
+    </a>
+
+    <a href="#blog" class="hover:text-orange-600 transition-colors">
+        Blog
+    </a>
+
+</nav>
+
         </details>
 
         <form class="site-search hidden xl:flex items-center gap-2" role="search" aria-label="Pencarian website">

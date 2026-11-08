@@ -46,11 +46,21 @@
             </summary>
             <nav class="absolute right-0 top-12 z-10 w-56 rounded-xl border border-gray-200 bg-white p-3 shadow-lg" aria-label="Navigasi Mobile">
                 <a href="#beranda" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Home</a>
-                <a href="#tentang" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Tentang Kami</a>
-                <a href="#program" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Program</a>
-                <a href="#layanan" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Layanan</a>
-                <a href="#berita" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Berita</a>
-                <a href="#blog" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Blog</a>
+                <div class="jk-dropdown">
+                    <button type="button" class="jk-dropdown-toggle">
+                        Tentang Kami
+                        <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                <div class="jk-dropdown-menu">
+                    <a href="#program" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Program</a>
+                    <a href="#layanan" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Layanan</a>
+                    <a href="#berita" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Berita</a>
+                    <a href="#blog" class="block rounded-lg px-3 py-3 hover:bg-orange-50">Blog</a>
+                </div>
+                
             </nav>
         </details>
 

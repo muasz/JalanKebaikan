@@ -509,6 +509,11 @@ label{
     min-height:76px;
     padding-top:12px;
     padding-bottom:12px;
+    overflow:visible;
+}
+
+.site-header{
+    overflow:visible;
 }
 
 .site-brand{
@@ -538,6 +543,95 @@ label{
     white-space:nowrap;
 }
 
+.site-primary-nav{
+    overflow:visible;
+}
+
+#program,
+#program-pendidikan,
+#program-kemanusiaan,
+#program-ekonomi{
+    scroll-margin-top:6rem;
+}
+
+.jk-dropdown{
+    position:relative;
+}
+
+.jk-dropdown-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    min-height:44px;
+    padding:8px 0;
+    border:0;
+    background:transparent;
+    color:inherit;
+    font:inherit;
+    white-space:nowrap;
+}
+
+.jk-chevron{
+    flex:0 0 auto;
+    transition:transform .2s ease;
+}
+
+.jk-dropdown.is-open > .jk-dropdown-toggle .jk-chevron{
+    transform:rotate(180deg);
+}
+
+.jk-dropdown-menu{
+    position:absolute;
+    top:100%;
+    left:0;
+    z-index:60;
+    display:grid;
+    min-width:240px;
+    padding:8px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#fff;
+    box-shadow:0 12px 28px rgba(17,24,39,.14);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-5px);
+    pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+}
+
+.site-primary-nav .jk-dropdown:hover > .jk-dropdown-menu,
+.site-primary-nav .jk-dropdown.is-open > .jk-dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    pointer-events:auto;
+    transition-delay:0s;
+}
+
+.site-primary-nav .jk-dropdown.is-dismissed > .jk-dropdown-menu{
+    opacity:0 !important;
+    visibility:hidden !important;
+    transform:translateY(-5px) !important;
+    pointer-events:none !important;
+}
+
+.jk-dropdown-menu a{
+    display:block;
+    padding:9px 12px !important;
+    border-radius:8px;
+    color:#374151;
+    font-size:14px !important;
+    line-height:1.4;
+    white-space:normal !important;
+}
+
+.jk-dropdown-menu a:hover,
+.jk-dropdown-menu a:focus-visible{
+    background:#fff7ed;
+    color:var(--primary);
+}
+
 .site-header-action{
     flex:0 0 auto;
 }
@@ -552,7 +646,9 @@ label{
 }
 
 .site-mobile-menu{
+    position:relative;
     margin-left:auto;
+    z-index:51;
 }
 
 .site-mobile-menu-toggle{
@@ -598,6 +694,75 @@ label{
     min-width:220px;
 }
 
+.site-mobile-nav{
+    position:absolute;
+    top:calc(100% + 8px);
+    right:0;
+    z-index:60;
+    display:grid;
+    width:min(20rem, calc(100vw - 2rem));
+    max-height:calc(100vh - 7rem);
+    overflow-y:auto;
+    padding:8px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#fff;
+    box-shadow:0 12px 28px rgba(17,24,39,.14);
+}
+
+.site-mobile-nav > a,
+.site-mobile-nav > .jk-dropdown > .jk-dropdown-toggle{
+    display:flex;
+    align-items:center;
+    width:100%;
+    min-height:44px;
+    padding:10px 12px;
+    border:0;
+    border-radius:8px;
+    background:transparent;
+    color:#374151;
+    font:inherit;
+    text-align:left;
+}
+
+.site-mobile-nav > a:hover,
+.site-mobile-nav > .jk-dropdown > .jk-dropdown-toggle:hover{
+    background:#fff7ed;
+    color:var(--primary);
+}
+
+.jk-dropdown--mobile .jk-dropdown-menu{
+    position:static;
+    min-width:0;
+    max-height:0;
+    overflow:hidden;
+    padding:0 0 0 12px;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    opacity:0;
+    visibility:hidden;
+    transform:none;
+    pointer-events:none;
+    transition:max-height .22s ease, opacity .18s ease, visibility 0s linear .22s;
+}
+
+.jk-dropdown--mobile.is-open .jk-dropdown-menu{
+    max-height:24rem;
+    padding-top:4px;
+    padding-bottom:4px;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transition-delay:0s;
+}
+
+.site-mobile-menu-toggle:focus-visible,
+.jk-dropdown-toggle:focus-visible{
+    outline:3px solid var(--primary);
+    outline-offset:3px;
+}
+
 .site-search{
     flex:0 0 auto;
 }
@@ -625,11 +790,22 @@ label{
     .site-header-action .btn-primary{
         width:100%;
     }
+
+    .site-primary-nav{
+        display:none !important;
+    }
 }
 
 @media (min-width: 1024px){
     .site-mobile-menu{
         display:none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .jk-chevron,
+    .jk-dropdown-menu{
+        transition:none;
     }
 }
 

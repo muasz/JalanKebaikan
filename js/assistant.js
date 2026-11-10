@@ -79,6 +79,8 @@
         const recognition = SpeechRecognition ? new SpeechRecognition() : null;
         let isListening = false;
         let pendingTopic = "";
+        let conversationHistory = [];
+        let isSending = false;
         const speech = window.JalanKebaikanSpeech;
         const speechSupported = Boolean(speech && speech.supported);
         let voiceFeedbackEnabled = speechSupported && window.localStorage.getItem("jalan-kebaikan-assistant-voice") !== "off";
@@ -396,23 +398,98 @@
             speakAssistantMessage(text);
         }
 
-        function sendMessage(text, response) {
-            const cleanText = text.trim();
-            if (!cleanText) return;
-            addMessage(cleanText, "user");
-            const actionResponse = applyAccessibilityCommand(cleanText);
-            window.setTimeout(() => {
-                const reply = actionResponse
-                    ? { text: actionResponse }
-                    : getConversationReply(cleanText, response);
+        function recordConversation(role, content) {
+            const cleanContent = String(content || "").trim();
+            if (!cleanContent) return;
 
-                if (reply.action) {
-                    addActionMessage(reply.text, reply.action);
+            conversationHistory.push({ role, content: cleanContent });
+            conversationHistory = conversationHistory.slice(-10);
+        }
+
+        async function getGeminiReply(message) {
+            const response = await fetch("api/chat.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    message,
+                    history: conversationHistory.slice(-10)
+                })
+            });
+
+            let result;
+            try {
+                result = await response.json();
+            } catch (error) {
+                throw new Error("Respons API bukan JSON yang valid.");
+            }
+
+            if (!response.ok || !result || result.success !== true) {
+                throw new Error(result?.message || `API mengembalikan HTTP ${response.status}.`);
+            }
+
+            const reply = typeof result.reply === "string" ? result.reply.trim() : "";
+            if (!reply) {
+                throw new Error("Respons Gemini kosong.");
+            }
+
+            recordConversation("user", message);
+            recordConversation("model", reply);
+            return reply;
+        }
+
+        function getNavigationAction(text) {
+            const command = normalizeCommand(text);
+            if (command.includes("donasi") || command.includes("program") || command.includes("campaign")) {
+                return showDonationPrograms();
+            }
+            return null;
+        }
+
+        async function sendMessage(text, response) {
+            const cleanText = text.trim();
+            if (!cleanText || isSending) return;
+
+            isSending = true;
+            addMessage(cleanText, "user");
+
+            const submitButton = form.querySelector("[type='submit']");
+            if (submitButton) submitButton.disabled = true;
+            setListeningStatus("Sedang memproses...");
+
+            try {
+                const actionResponse = applyAccessibilityCommand(cleanText);
+
+                if (actionResponse) {
+                    recordConversation("user", cleanText);
+                    recordConversation("model", actionResponse);
+                    addMessage(actionResponse, "assistant");
                     return;
                 }
 
-                addMessage(reply.text, "assistant");
-            }, 250);
+                const reply = await getGeminiReply(cleanText);
+                const action = getNavigationAction(cleanText);
+
+                if (action) {
+                    addActionMessage(reply, action);
+                } else {
+                    addMessage(reply, "assistant");
+                }
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                addMessage(
+                    "Maaf, asisten sedang tidak dapat terhubung. Periksa koneksi atau coba lagi sebentar.",
+                    "assistant"
+                );
+            } finally {
+                isSending = false;
+                if (submitButton) submitButton.disabled = false;
+                if (assistantStatus.textContent === "Sedang memproses...") {
+                    setListeningStatus("Siap membantu");
+                }
+            }
         }
 
         function setListeningStatus(message) {

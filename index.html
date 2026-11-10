@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- File CSS Utama Anda -->
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=4">
     <link rel="stylesheet" href="css/accessibility.css">
     <link rel="stylesheet" href="css/assistant.css">
 </head>
@@ -29,24 +29,17 @@
             <span class="font-bold text-xl text-gray-900">Jalan Kebaikan</span>
         </a>
 
-<nav class="hidden lg:flex items-center gap-7 font-medium text-gray-700" aria-label="Navigasi Utama">
+<nav class="site-primary-nav hidden lg:flex items-center gap-7 font-medium text-gray-700" aria-label="Navigasi Utama">
+    <a href="#beranda" class="text-orange-600 font-semibold hover:text-orange-700">Home</a>
 
-    <a href="#beranda"
-       class="text-orange-600 font-semibold hover:text-orange-700">
-        Home
-    </a>
-
-    <!-- DROPDOWN TENTANG KAMI -->
     <div class="jk-dropdown">
-        <button type="button" class="jk-dropdown-toggle">
-            Tentang Kami
-            <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2">
+        <button type="button" class="jk-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu-desktop">
+            <span>Tentang Kami</span>
+            <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="m6 9 6 6 6-6"/>
             </svg>
         </button>
-
-        <div class="jk-dropdown-menu">
+        <div id="about-menu-desktop" class="jk-dropdown-menu">
             <a href="#tentang">Latar Belakang</a>
             <a href="#visi-misi">Visi dan Misi</a>
             <a href="#struktur-pengelola">Struktur Pengelola</a>
@@ -57,24 +50,93 @@
         </div>
     </div>
 
-    <a href="#program" class="hover:text-orange-600 transition-colors">
-        Program
-    </a>
+    <div class="jk-dropdown">
+        <button type="button" class="jk-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="program-menu-desktop">
+            <span>Program</span>
+            <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+            </svg>
+        </button>
+        <div id="program-menu-desktop" class="jk-dropdown-menu">
+            <a href="#program">Semua</a>
+            <a href="#program-pendidikan">Pendidikan</a>
+            <a href="#program-kemanusiaan">Kemanusiaan</a>
+            <a href="#program-ekonomi">Ekonomi</a>
+        </div>
+    </div>
 
-    <a href="#layanan" class="hover:text-orange-600 transition-colors">
-        Layanan
-    </a>
+    <div class="jk-dropdown">
+        <button type="button" class="jk-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="services-menu-desktop">
+            <span>Layanan</span>
+            <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+            </svg>
+        </button>
+        <div id="services-menu-desktop" class="jk-dropdown-menu">
+            <a href="formulir-donasi.html">Jemput Donasi</a>
+            <a href="#layanan">Layanan Ambulance</a>
+            <a href="formulir-donasi.html">Konsultasi Online</a>
+        </div>
+    </div>
 
-    <a href="#berita" class="hover:text-orange-600 transition-colors">
-        Berita
-    </a>
-
-    <a href="#blog" class="hover:text-orange-600 transition-colors">
-        Blog
-    </a>
-
+    <a href="#berita" class="hover:text-orange-600 transition-colors">Berita</a>
+    <a href="#blog" class="hover:text-orange-600 transition-colors">Blog</a>
 </nav>
 
+        <details class="site-mobile-menu lg:hidden">
+            <summary class="site-mobile-menu-toggle min-h-[44px] px-4 py-2 border border-gray-300 rounded-lg font-semibold text-gray-700 cursor-pointer">
+                <span class="site-menu-icon" aria-hidden="true"></span>
+                <span>Menu</span>
+            </summary>
+            <nav class="site-mobile-nav" aria-label="Navigasi Mobile">
+                <a href="#beranda">Home</a>
+                <div class="jk-dropdown jk-dropdown--mobile">
+                    <button type="button" class="jk-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu-mobile">
+                        <span>Tentang Kami</span>
+                        <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div id="about-menu-mobile" class="jk-dropdown-menu">
+                        <a href="#tentang">Latar Belakang</a>
+                        <a href="#visi-misi">Visi dan Misi</a>
+                        <a href="#struktur-pengelola">Struktur Pengelola</a>
+                        <a href="#kebijakan-strategis">Kebijakan Strategis</a>
+                        <a href="#kebijakan-mutu">Kebijakan Mutu</a>
+                        <a href="#laporan">Laporan</a>
+                        <a href="#mitra">Mitra</a>
+                    </div>
+                </div>
+                <div class="jk-dropdown jk-dropdown--mobile">
+                    <button type="button" class="jk-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="program-menu-mobile">
+                        <span>Program</span>
+                        <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div id="program-menu-mobile" class="jk-dropdown-menu">
+                        <a href="#program">Semua</a>
+                        <a href="#program-pendidikan">Pendidikan</a>
+                        <a href="#program-kemanusiaan">Kemanusiaan</a>
+                        <a href="#program-ekonomi">Ekonomi</a>
+                    </div>
+                </div>
+                <div class="jk-dropdown jk-dropdown--mobile">
+                    <button type="button" class="jk-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="services-menu-mobile">
+                        <span>Layanan</span>
+                        <svg class="jk-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div id="services-menu-mobile" class="jk-dropdown-menu">
+                        <a href="formulir-donasi.html">Jemput Donasi</a>
+                        <a href="#layanan">Layanan Ambulance</a>
+                        <a href="formulir-donasi.html">Konsultasi Online</a>
+                    </div>
+                </div>
+                <a href="#berita">Berita</a>
+                <a href="#blog">Blog</a>
+            </nav>
         </details>
 
         <form class="site-search hidden xl:flex items-center gap-2" role="search" aria-label="Pencarian website">
@@ -176,7 +238,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     
                     <!-- KARTU 1 -->
-                    <article class="card">
+                    <article id="program-pendidikan" class="card">
                         <img src="./images/Header/beasiswa.jpg" 
                              alt="Anak-anak belajar di sekolah pedalaman" 
                              class="w-full h-48 object-cover">
@@ -214,7 +276,7 @@
                     </article>
 
                     <!-- KARTU 2 -->
-                    <article class="card">
+                    <article id="program-kemanusiaan" class="card">
                         <img src="./images/Header/images.jpg" 
                              alt="Bantuan air bersih untuk daerah kekeringan" 
                              class="w-full h-48 object-cover">
@@ -252,7 +314,7 @@
                     </article>
 
                     <!-- KARTU 3 -->
-                    <article class="card">
+                    <article id="program-ekonomi" class="card">
                         <img src="./images/Header/bantuan.jpeg" 
                              alt="Pemberdayaan UMKM dan pedagang kecil" 
                              class="w-full h-48 object-cover">
@@ -427,5 +489,6 @@
     <script src="js/accessibility.js"></script>
     <script src="js/assistant.js"></script>
     <script src="js/hero-slider.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>

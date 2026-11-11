@@ -767,6 +767,29 @@ label{
     flex:0 0 auto;
 }
 
+.program-filter-button {
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 9999px;
+    background: #f3f4f6;
+    color: #374151;
+    font-weight: 600;
+}
+
+.program-filter-button:hover {
+    background: #ffedd5;
+    color: #c2410c;
+}
+
+.program-filter-button[aria-pressed="true"] {
+    background: #c2410c;
+    color: #fff;
+}
+
+.program-card--hidden {
+    display: none !important;
+}
+
 @media (max-width: 1279px){
     .site-header-inner > nav{
         gap:16px;

@@ -226,19 +226,20 @@
                         </p>
                     </div>
                     <!-- Filter Kategori -->
-                    <div class="flex flex-wrap gap-2">
-                        <button class="px-4 py-2 rounded-full text-sm font-semibold bg-orange-600 text-white">Semua</button>
-                        <button class="px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200">Pendidikan</button>
-                        <button class="px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200">Kemanusiaan</button>
-                        <button class="px-4 py-2 rounded-full text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200">Ekonomi</button>
+                    <div class="program-filters flex flex-wrap gap-2" role="group" aria-label="Filter kategori program">
+                        <button type="button" class="program-filter-button" data-program-filter="all" aria-pressed="true">Semua</button>
+                        <button type="button" class="program-filter-button" data-program-filter="pendidikan" aria-pressed="false">Pendidikan</button>
+                        <button type="button" class="program-filter-button" data-program-filter="kemanusiaan" aria-pressed="false">Kemanusiaan</button>
+                        <button type="button" class="program-filter-button" data-program-filter="ekonomi" aria-pressed="false">Ekonomi</button>
                     </div>
+                    <p id="program-filter-status" class="sr-only" aria-live="polite"></p>
                 </div>
 
                 <!-- GRID KARTU PROGRAM (1 Kolom di HP, 2 di Tablet, 3 di Desktop) -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     
                     <!-- KARTU 1 -->
-                    <article id="program-pendidikan" class="card">
+                    <article id="program-pendidikan" class="card" data-program-category="pendidikan">
                         <img src="./images/Header/beasiswa.jpg" 
                              alt="Anak-anak belajar di sekolah pedalaman" 
                              class="w-full h-48 object-cover">
@@ -276,7 +277,7 @@
                     </article>
 
                     <!-- KARTU 2 -->
-                    <article id="program-kemanusiaan" class="card">
+                    <article id="program-kemanusiaan" class="card" data-program-category="kemanusiaan">
                         <img src="./images/Header/images.jpg" 
                              alt="Bantuan air bersih untuk daerah kekeringan" 
                              class="w-full h-48 object-cover">
@@ -314,7 +315,7 @@
                     </article>
 
                     <!-- KARTU 3 -->
-                    <article id="program-ekonomi" class="card">
+                    <article id="program-ekonomi" class="card" data-program-category="ekonomi">
                         <img src="./images/Header/bantuan.jpeg" 
                              alt="Pemberdayaan UMKM dan pedagang kecil" 
                              class="w-full h-48 object-cover">
@@ -490,5 +491,6 @@
     <script src="js/assistant.js"></script>
     <script src="js/hero-slider.js"></script>
     <script src="js/navigation.js"></script>
+    <script src="js/program-filter.js"></script>
 </body>
 </html>

@@ -181,13 +181,22 @@
             }
 
             if (matchesAny(command, [
+                /^(?:tolong\s+)?(?:perbesar|besarkan|tingkatkan|naikkan)(?:\s+lagi)?$/,
                 /(?:perbesar|besarkan|tingkatkan|naikkan).*(?:tulisan|teks|huruf)/,
                 /(?:tulisan|teks|huruf).*(?:terlalu kecil|sangat kecil|susah dibaca|sulit dibaca)/,
                 /saya (?:susah|sulit) membaca/
             ])) {
-                return activateAccessibilityControl("[data-scale-change='1']")
-                    ? "Ukuran tulisan sudah diperbesar."
-                    : "Pengaturan ukuran tulisan belum tersedia di halaman ini.";
+                const currentScale = Number(document.documentElement.dataset.accessibilityScale || 1);
+                if (currentScale >= 2) {
+                    return "Ukuran tulisan sudah mencapai batas maksimum 200%.";
+                }
+
+                if (!activateAccessibilityControl("[data-scale-change='1']")) {
+                    return "Pengaturan ukuran tulisan belum tersedia di halaman ini.";
+                }
+
+                const newScale = Number(document.documentElement.dataset.accessibilityScale || currentScale);
+                return `Ukuran tulisan diperbesar menjadi ${Math.round(newScale * 100)}%.`;
             }
 
             if (matchesAny(command, [
@@ -585,9 +594,10 @@
                     .join(" ")
                     .trim();
                 if (transcript) {
-                    input.value = transcript;
+                    input.value = "";
                     input.focus();
                     setListeningStatus("Teks suara siap dikirim.");
+                    sendMessage(transcript);
                 }
             });
             recognition.addEventListener("error", (event) => {

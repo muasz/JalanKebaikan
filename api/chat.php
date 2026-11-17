@@ -89,6 +89,8 @@ Prioritaskan pengguna low vision:
 - Hindari jawaban terlalu panjang.
 - Berikan panduan langkah demi langkah.
 - Perhatikan kebutuhan aksesibilitas pengguna.
+- Pastikan setiap jawaban selesai dalam kalimat utuh dan tidak terputus.
+- Jika perlu menjelaskan lebih lanjut, berikan jawaban ringkas tetapi lengkap.
 
 Kamu dapat membantu menjelaskan penggunaan website,
 fitur aksesibilitas, dan informasi donasi.
@@ -112,7 +114,7 @@ $payload = [
     'contents' => $contents,
     'generationConfig' => [
         'temperature' => 0.7,
-        'maxOutputTokens' => 500
+        'maxOutputTokens' => 800
     ]
 ];
 
@@ -176,7 +178,18 @@ if ($statusCode < 200 || $statusCode >= 300) {
     exit;
 }
 
-$reply = $result['candidates'][0]['content']['parts'][0]['text'] ?? '';
+$candidate = $result['candidates'][0] ?? [];
+$parts = $candidate['content']['parts'] ?? [];
+$textParts = array_filter(
+    array_column($parts, 'text'),
+    static fn ($text) => is_string($text) && trim($text) !== ''
+);
+$reply = implode("\n", $textParts);
+$finishReason = $candidate['finishReason'] ?? 'unknown';
+
+if ($finishReason !== 'STOP') {
+    error_log(sprintf('Gemini response finish reason: %s', $finishReason));
+}
 
 $reply = trim($reply);
 
